@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "EpicZeit",
+  "version": "1.0",
+  "description": "Epic way to sync timezones among colleagues, friends, and family across the globe.",
+  "author": "Filip Vitas",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "management",
+    "tabs"
+  ],
+  "icons": {
+  }
+}

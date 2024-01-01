@@ -1,0 +1,18 @@
+
+✅ move add location to menu
+✅ add choose palette side menu
+✅ show which timezone is home
+✅ proper +- timezone offset from home -> put it to settings ?
+- proper implentation of time change
+- implement your own timepicker
+❌ add virtualizer for timezones - no, decrease palette number
+
+- mark selected theme
+- update daylight theme
+
+- test it in extension
+- buy domain, build some small site
+- publish extension to store
+
+- create twitter account
+- start sharing / promoting
