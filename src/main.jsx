@@ -5,16 +5,6 @@ import App from './App.jsx'
 import './globals.css'
 import '/node_modules/flag-icons/css/flag-icons.min.css'
 
-// if (Math.random() > 0.5) {
-//   window?.chrome?.tabs?.update({ url: 'chrome://new-tab-page' })
-// } else {
-//   ReactDOM.createRoot(document.getElementById('root')).render(
-//     <React.StrictMode>
-//       <App />
-//     </React.StrictMode>,
-//   )
-// }
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
