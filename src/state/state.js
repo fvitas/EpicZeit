@@ -1,5 +1,12 @@
 import { proxy, subscribe, useSnapshot } from 'valtio'
 
+import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone.js'
+import utc from 'dayjs/plugin/utc.js'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
 async function fetchHome() {
   let response = await fetch('http://ip-api.com/json/?fields=61439')
   let body = await response.json()
@@ -14,15 +21,15 @@ async function fetchHome() {
 
 const storedState = localStorage.getItem('state')
 const defaultState = {
-  currentTime: new Date(),
-  isEdited: false,
+  currentTime: dayjs.utc(),
+  showResetTime: false,
   // timezones: [fetchHome()],
   timezones: [],
 }
 let initialState = defaultState
 if (storedState) {
   initialState = JSON.parse(storedState)
-  initialState.currentTime = new Date(initialState.currentTime)
+  initialState.currentTime = dayjs(initialState.currentTime).utc()
 }
 
 const state = proxy(initialState)
@@ -75,22 +82,19 @@ function editLocation(location, newLabel) {
 }
 
 function editTimezoneTime(timezone, hours, minutes = '00', amPm = '') {
-  // todo check this shit
-  let formatter = new Intl.DateTimeFormat('en-GB', {
-    timeZone: timezone.locations[0].timeZoneName,
-    hour12: false,
-    timeStyle: 'short',
-  })
+  // dayjs.tz('2023-11-18 15:55', 'Asia/Taipei').utc().format()
+  // dayjs.utc('2023-11-18 11:55').tz('Asia/Taipei').format()
+  // dayjs.tz('2023-11-18 15:55', 'Asia/Taipei').tz('Europe/Belgrade').format()
 
+  let timezoneName = timezone.locations[0].timezone
   let newHours = amPm && amPm === 'pm' ? Number(hours) + 12 : Number(hours)
   let newMinutes = Number(minutes)
 
-  let currentDate = new Date()
-  let newDate = new Date()
-  newDate.setHours(newHours, Number(newMinutes))
+  let currentTimezoneDate = state.currentTime.tz(timezoneName).format('YYYY-MM-DD')
+  let newTime = dayjs.tz(`${currentTimezoneDate} ${newHours}:${newMinutes}`, timezoneName).utc()
 
-  state.currentTime = newDate
-  state.isEdited = currentDate.getTime() !== newDate.getTime()
+  state.showResetTime = state.showResetTime || state.currentTime.format('HH:mm') !== newTime.format('HH:mm')
+  state.currentTime = newTime
 }
 
 function deleteTimezone(timezone) {
@@ -98,8 +102,8 @@ function deleteTimezone(timezone) {
 }
 
 function resetTime() {
-  state.isEdited = false
-  state.currentTime = new Date()
+  state.showResetTime = false
+  state.currentTime = dayjs().utc()
 }
 
 function changeHome(timezone) {
@@ -107,9 +111,6 @@ function changeHome(timezone) {
     tz.isHome = tz.offset === timezone.offset
   })
 }
-
-// subscribeKey(state, 'folders', fetchImage)
-// subscribeKey(state, 'selectedFolder', fetchImage)
 
 export const actions = {
   setState,
@@ -134,8 +135,8 @@ export function useHomeTimezone() {
 
 setInterval(() => {
   // TODO (filipv): check if time changed, driftless npm
-  if (!state.isEdited) {
-    state.currentTime = new Date()
+  if (!state.showResetTime) {
+    state.currentTime = dayjs().utc()
   }
 }, 5_000)
 

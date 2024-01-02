@@ -7,6 +7,7 @@ import { cn } from '@/utils.js'
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import chroma from 'chroma-js'
+import dayjs from 'dayjs'
 import { useEffect } from 'react'
 import { When } from 'react-if'
 
@@ -46,9 +47,9 @@ function generateColors(palette, timezone) {
   }
 }
 
-;['Asia/Kolkata', 'Australia/Sydney', 'America/New_York'].forEach(timezone => console.log(getOffset(timezone)))
-
 function getOffset(timezone, date = new Date()) {
+  // dayjs().utcOffset()
+
   let formatter = new Intl.DateTimeFormat('en-GB', {
     timeZone: timezone,
     timeZoneName: 'shortOffset',
@@ -81,15 +82,16 @@ function getOffsetFromHome(timezone, homeTimezone = 'UTC') {
   let resultMinutes = Math.abs(difference % 60)
 
   return resultSign + resultHour + (resultMinutes > 0 ? ':' + String(resultMinutes).padStart(2, '0') : '')
-}
 
-function getWeekday(timezone, date = new Date()) {
-  let formatter = new Intl.DateTimeFormat('en-GB', {
-    timeZone: timezone,
-    weekday: 'short',
-  })
-
-  return formatter.format(date)
+  // let homeTimezone = dayjs.tz('2023-11-18 15:55', homeTimezoneName)
+  // let destinationTimezone = dayjs.tz('2023-11-18 15:55', timezoneName)
+  // let difference = destinationTimezone.diff(homeTimezone, 'minutes')
+  //
+  // let resultSign = difference > 0 ? '+' : '-'
+  // let resultHour = Math.abs(difference) < 60 ? Math.abs(difference) : Math.floor(Math.abs(difference) / 60)
+  // let resultMinutes = Math.abs(difference % 60)
+  //
+  // return resultSign + resultHour + (resultMinutes > 0 ? ':' + String(resultMinutes).padStart(2, '0') : '')
 }
 
 function addSuffix(number) {
@@ -107,44 +109,38 @@ function addSuffix(number) {
   }
 }
 
-function getDay(timezone, date = new Date()) {
-  let formatter = new Intl.DateTimeFormat('en-GB', {
-    timeZone: timezone,
-    day: 'numeric',
-  })
+function getFormattedTime(timezone, show24h, currentTime) {
+  const formatTime = show24h ? 'ddd D HH mm' : 'ddd D mm hh a'
 
-  return Number(formatter.format(date))
-}
-
-function getTime(timezone, date = new Date()) {
-  let formatter = new Intl.DateTimeFormat('en-GB', {
-    timeZone: timezone,
-    timeStyle: 'short',
-    hour12: false,
-  })
-
-  return formatter.format(date).split(':')
+  return dayjs.utc(currentTime).tz(timezone).format(formatTime).split(' ')
 }
 
 export function Timezone({ currentTime, timezone, homeTimezone }) {
-  const { showFlags, showDate, showBoldHour, offsetFromHome } = useTimezoneSettings()
+  const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
   const { currentPalette, previewPalette } = usePaletteSettings()
   const palette = previewPalette ?? currentPalette
   const [ref, rect] = useResizeObserver()
 
-  let [hours, minutes] = getTime(timezone.locations[0].timezone, currentTime)
+  let [weekDay, dayOfTheMonth, hours, minutes, amPm] = getFormattedTime(
+    timezone.locations[0].timezone,
+    show24h,
+    currentTime,
+  )
 
   useEffect(() => {
     $('.clockpicker-' + timezone.offset).clockpicker({
-      twelvehour: false,
+      twelvehour: !show24h,
       placement: 'bottom',
       align: 'left',
       autoclose: true,
       onChange: ([hours, minutes, amPm]) => {
         actions.editTimezoneTime(timezone, hours, minutes, amPm)
       },
+      onDismiss: () => {
+        actions.resetTime()
+      },
     })
-  }, [])
+  }, [show24h])
 
   return (
     <div
@@ -154,13 +150,18 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
       <div className="text-center">{timezone.locations[0].timezone}</div>
 
       <div
-        style={{ fontSize: 'clamp(1rem, 0.5rem + 3.5vw, 5rem)' }}
+        style={{ fontSize: show24h ? 'clamp(1rem, 0.5rem + 3.5vw, 5rem)' : 'clamp(1rem, 0.5rem + 2.5vw, 5rem)' }}
         className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
         <div className={'inline-block ' + 'clockpicker-' + timezone.offset}>
           <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center">
             <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
             <span>:</span>
-            <span className="">{minutes}</span>
+            <span className="">
+              {minutes}
+              <When condition={!show24h}>
+                <span className="text-3xl">{amPm}</span>
+              </When>
+            </span>
           </label>
 
           <input
@@ -175,7 +176,7 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
 
       <When condition={showDate}>
         <div className="text-center" style={{ fontSize: 'clamp(1rem, 1vw + 0.75rem, 1.5rem)' }}>
-          {getWeekday(timezone.locations[0].timezone)}, {addSuffix(getDay(timezone.locations[0].timezone))}
+          {weekDay}, {addSuffix(dayOfTheMonth)}
         </div>
       </When>
 

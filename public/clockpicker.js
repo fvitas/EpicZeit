@@ -509,6 +509,7 @@
         target.closest(self.input).length === 0
       ) {
         self.hide()
+        raiseCallback(self.options.onDismiss)
       }
     })
 
@@ -516,6 +517,7 @@
     $doc.on('keyup.clockpicker.' + this.id, function (e) {
       if (e.keyCode === 27) {
         self.hide()
+        raiseCallback(self.options.onDismiss)
       }
     })
 

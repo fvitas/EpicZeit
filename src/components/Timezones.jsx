@@ -4,21 +4,8 @@ import { actions, useHomeTimezone, useTimezoneState } from '@/state/state.js'
 import { IconWorldSearch } from '@tabler/icons-react'
 import { When } from 'react-if'
 
-function getOffset(timezone, date = new Date()) {
-  let formatter = new Intl.DateTimeFormat('en-GB', {
-    timeZone: timezone,
-    timeZoneName: 'shortOffset',
-    year: 'numeric',
-  })
-  let [year, sign = '+', hour = 0, minutes = 0] = formatter.format(date).match(/\d+|\+|-/g)
-
-  return sign + hour + (minutes ? ':' + minutes : '')
-}
-
-;['Asia/Kolkata', 'Australia/Sydney', 'America/New_York'].forEach(timezone => console.log(getOffset(timezone)))
-
 export function Timezones() {
-  const { currentTime, isEdited, timezones } = useTimezoneState()
+  const { currentTime, showResetTime, timezones } = useTimezoneState()
   const homeTimezone = useHomeTimezone()
 
   return (
@@ -31,7 +18,7 @@ export function Timezones() {
         </div>
       </When>
 
-      <When condition={isEdited}>
+      <When condition={showResetTime}>
         <div className="fixed top-2 left-1/2 translate-x-[-50%] z-50">
           <Button size="sm" variant="outline" className="text-sm" onClick={() => actions.resetTime()}>
             Reset time
