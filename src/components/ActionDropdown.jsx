@@ -49,6 +49,7 @@ export function ActionDropdown() {
   function discardSelectedPalette() {
     paletteActions.discardPalette()
     setShowPalettePicker(false)
+    setShowCustomPalettePicker(false)
   }
   function saveSelectedPalette() {
     paletteActions.savePalette()
