@@ -7,23 +7,10 @@ import utc from 'dayjs/plugin/utc.js'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-async function fetchHome() {
-  let response = await fetch('http://ip-api.com/json/?fields=61439')
-  let body = await response.json()
-
-  return {
-    timezone: body.timezone,
-    label: body.city,
-    country: body.country,
-    countryCode: body.countryCode,
-  }
-}
-
 const storedState = localStorage.getItem('state')
 const defaultState = {
   currentTime: dayjs.utc(),
   showResetTime: false,
-  // timezones: [fetchHome()],
   timezones: [],
 }
 let initialState = defaultState
