@@ -1,11 +1,11 @@
-import chroma from 'chroma-js'
-import { proxy, useSnapshot } from 'valtio'
+import { defaultPalettes } from '@/components/palette/colors.js'
+import { proxy, subscribe, useSnapshot } from 'valtio'
 
 const storedState = localStorage.getItem('epiczeit-palette')
 const defaultState = {
   currentPalette: {
-    id: 'YlGnBu',
-    colors: chroma.scale('YlGnBu').mode('hsl').colors(25),
+    id: 'default',
+    colors: defaultPalettes[0],
     isDynamic: false,
   },
   previewPalette: null,
@@ -31,7 +31,7 @@ function discardPalette() {
 }
 
 function reversePreviewPalette() {
-  if (state.previewPalette) {
+  if (state.previewPalette && !state.previewPalette.isDynamic) {
     state.previewPalette.colors.reverse()
   }
 }
@@ -47,6 +47,6 @@ export function usePaletteSettings() {
   return useSnapshot(state)
 }
 
-// subscribe(state, () => {
-//   localStorage.setItem('epiczeit-palette', JSON.stringify(state))
-// })
+subscribe(state, () => {
+  localStorage.setItem('epiczeit-palette', JSON.stringify(state))
+})

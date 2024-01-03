@@ -509,7 +509,6 @@
         target.closest(self.input).length === 0
       ) {
         self.hide()
-        raiseCallback(self.options.onDismiss)
       }
     })
 

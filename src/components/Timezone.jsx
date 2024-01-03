@@ -25,9 +25,20 @@ export function generateTextColor(backgroundColor) {
   return contrastWithWhite > contrastWithBlack ? 'white' : 'black'
 }
 
-function generateColors(palette, timezone) {
+function generateColors(palette, timezone, currentTime) {
   let offset = getOffset(timezone)
   let hourOffset = parseInt(offset)
+
+  if (palette.isDynamic) {
+    let hour = currentTime.tz(timezone).format('HH')
+    let backgroundColor = palette.colors[Number(hour)]
+
+    return {
+      backgroundColor: backgroundColor,
+      background: `linear-gradient(to bottom, ${backgroundColor}, ${palette.colors[(24 + Number(hour) - 2) % 24]})`,
+      color: generateTextColor(backgroundColor),
+    }
+  }
 
   let backgroundColor = 'white'
 
@@ -146,7 +157,7 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
     <div
       ref={ref}
       className="group relative h-full flex-1 space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
-      style={generateColors(palette, timezone.locations[0].timezone)}>
+      style={generateColors(palette, timezone.locations[0].timezone, currentTime)}>
       <div className="text-center">{timezone.locations[0].timezone}</div>
 
       <div

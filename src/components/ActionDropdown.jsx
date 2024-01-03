@@ -1,6 +1,6 @@
 import { AddLocation } from '@/components/AddLocation.jsx'
-import { CustomPalettePicker } from '@/components/CustomPalettePicker.jsx'
-import { PalettePicker } from '@/components/PalettePicker.jsx'
+import { CustomPalettePicker } from '@/components/palette/CustomPalettePicker.jsx'
+import { PalettePicker } from '@/components/palette/PalettePicker.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import {
   Dialog,

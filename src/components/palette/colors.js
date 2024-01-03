@@ -1,7 +1,4 @@
-import { ScrollArea } from '@/components/ui/scroll-area.jsx'
-import { paletteActions } from '@/state/palette.js'
 import chroma from 'chroma-js'
-import palettes from './palettes.json'
 
 // lab hsl lch oklab oklch
 
@@ -21,111 +18,110 @@ const magma = generateColorArray(
 
 const dayAndNight = [
   '#040b3c',
-  '#016792',
-  '#07729f',
-  '#12a1c0',
-  '#74d4cc',
-  '#efeebc',
-  '#fee154',
-  '#fdc352',
-  '#ffac6f',
-  '#fda65a',
+  '#040b3c',
+  '#033073',
+  '#2171da',
+  '#74d4a9',
+  '#fffee0',
+  '#ffe89e',
+  '#fac263',
+  '#fcc093',
   '#fd9e58',
-  '#f18448',
   '#f06b7e',
   '#ca5a92',
   '#5b2c83',
-  '#371a79',
+  '#040b3c',
   '#040b3c',
 ]
 
-const defaultPalettes = [
+export const defaultPalettes = [
   {
     id: 'DayAndNight',
+    isDynamic: true,
     colors: chroma.scale(dayAndNight).mode('hsl').colors(25),
   },
   {
     id: 'YlGnBu',
-    colors: chroma.scale('YlGnBu').mode('hsl').colors(25),
+    isDynamic: true,
+    // colors: chroma.scale('YlGnBu').mode('hsl').colors(25),
+    colors: chroma
+      .scale([
+        ...chroma.scale('YlGnBu').padding([-0.1, -0.1]).gamma(1.5).mode('hsl').colors(13).toReversed(),
+        ...chroma.scale('YlGnBu').padding([-0.1, -0.1]).gamma(1.5).mode('hsl').colors(13),
+      ])
+      .mode('hsl')
+      .colors(25),
   },
+
   {
-    id: 'yellow-navy-1',
-    colors: chroma.scale(['yellow', 'navy']).mode('hsl').colors(25),
+    id: 'yellow-navy-1-2',
+    isDynamic: true,
+    colors: chroma
+      .scale([
+        ...chroma.scale(['yellow', 'navy']).padding([-0.5, -0.5]).gamma(1.2).mode('hsl').colors(13).toReversed(),
+        ...chroma.scale(['yellow', 'navy']).padding([-0.5, -0.5]).gamma(1.2).mode('hsl').colors(13),
+      ])
+      .mode('hsl')
+      .colors(25),
   },
   {
     id: 'Viridis',
-    colors: chroma.scale('Viridis').mode('hsl').colors(25).toReversed(),
+    isDynamic: true,
+    // colors: chroma.scale('Viridis').mode('hsl').colors(25).toReversed(),
+    colors: chroma
+      .scale([
+        ...chroma.scale('Viridis').padding([-0.5, -0.5]).gamma(1.5).mode('hsl').colors(13),
+        ...chroma.scale('Viridis').padding([-0.5, -0.5]).gamma(1.5).mode('hsl').colors(13).toReversed(),
+      ])
+      .mode('hsl')
+      .colors(25),
   },
   {
     id: 'yellow-navy-2',
-    colors: chroma.scale(['yellow', 'navy']).mode('lch').colors(25),
+    isDynamic: true,
+    // colors: chroma.scale(['yellow', 'navy']).mode('lch').colors(25),
+    colors: chroma
+      .scale([
+        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(0.5).mode('lch').colors(13).toReversed(),
+        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(0.5).mode('lch').colors(13),
+      ])
+      .mode('lch')
+      .colors(25),
   },
   {
     id: 'Inferno',
-    colors: chroma.scale(inferno).mode('hsl').colors(25).toReversed(),
+    isDynamic: true,
+    // colors: chroma.scale(inferno).mode('hsl').colors(25).toReversed(),
+    colors: chroma
+      .scale([
+        ...chroma.scale(inferno).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13),
+        ...chroma.scale(inferno).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13).toReversed(),
+      ])
+      .mode('hsl')
+      .colors(25),
   },
   {
     id: 'plasma',
-    colors: chroma.scale(plasma).mode('hsl').colors(25).toReversed(),
+    isDynamic: true,
+    // colors: chroma.scale(plasma).mode('hsl').colors(25).toReversed(),
+    colors: chroma
+      .scale([
+        ...chroma.scale(plasma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13),
+        ...chroma.scale(plasma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13).toReversed(),
+      ])
+      .mode('hsl')
+      .colors(25),
   },
   {
     id: 'magma',
-    colors: chroma.scale(magma).mode('hsl').colors(25).toReversed(),
+    isDynamic: true,
+    // colors: chroma.scale(magma).mode('hsl').colors(25).toReversed(),
+    colors: chroma
+      .scale([
+        ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13),
+        ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13).toReversed(),
+      ])
+      .mode('hsl')
+      .colors(25),
   },
 ]
-
-export function PalettePicker() {
-  const loadedPalettes =
-    [...new Set(palettes)].map(palette => ({
-      id: palette,
-      colors: palette.match(/.{6}/g).map(color => '#' + color),
-    })) ?? []
-
-  function setDynamicPalette(newPalette) {
-    paletteActions.setPreviewPalette(newPalette)
-  }
-
-  function setStaticPalette(newPalette) {
-    paletteActions.setPreviewPalette({
-      id: newPalette.id,
-      colors: chroma.scale(newPalette.colors).mode('hsl').colors(25),
-    })
-  }
-
-  return (
-    <div className="w-[calc(100%_+3rem)] h-full max-h-[300px] -mx-6">
-      <ScrollArea className="h-[300px]">
-        <h3 className="pl-6 sticky top-0 bg-white">Dynamic (Daylight) palettes</h3>
-
-        <div className="flex flex-wrap gap-4 px-6 py-2">
-          {defaultPalettes.map(palette => (
-            <div
-              key={palette.id}
-              className="inline-flex w-40 h-10 rounded overflow-hidden cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary shadow-sm"
-              onClick={() => setDynamicPalette(palette)}>
-              {palette.colors.map(color => (
-                <div className="flex-1" key={palette.id + color} style={{ backgroundColor: color }}></div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        <hr className="m-6" />
-
-        <h3 className="pl-6 sticky top-0 bg-white">Static palettes</h3>
-        <div className="flex flex-wrap gap-4 px-6 py-2">
-          {loadedPalettes.map(palette => (
-            <div
-              key={palette.id}
-              className="inline-flex rounded overflow-hidden cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary shadow-sm"
-              onClick={() => setStaticPalette(palette)}>
-              {palette.colors.map(color => (
-                <div className="w-10 h-10" key={palette.id + color} style={{ backgroundColor: color }}></div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </ScrollArea>
-    </div>
-  )
-}
