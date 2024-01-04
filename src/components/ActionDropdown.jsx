@@ -67,7 +67,7 @@ export function ActionDropdown() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button size="sm" className="absolute top-2 right-2 text-sm z-50">
+          <Button size="sm" className="fixed top-2 right-2 text-sm z-50">
             Menu
           </Button>
         </DropdownMenuTrigger>
