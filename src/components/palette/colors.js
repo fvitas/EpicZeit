@@ -82,8 +82,8 @@ export const defaultPalettes = [
     // colors: chroma.scale(['yellow', 'navy']).mode('lch').colors(25),
     colors: chroma
       .scale([
-        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(0.5).mode('lch').colors(13).toReversed(),
-        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(0.5).mode('lch').colors(13),
+        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(1).mode('lch').colors(13).toReversed(),
+        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(1).mode('lch').colors(13),
       ])
       .mode('lch')
       .colors(25),
@@ -118,8 +118,8 @@ export const defaultPalettes = [
     // colors: chroma.scale(magma).mode('hsl').colors(25).toReversed(),
     colors: chroma
       .scale([
-        ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13),
-        ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13).toReversed(),
+        ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1).mode('hsl').colors(13),
+        ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1).mode('hsl').colors(13).toReversed(),
       ])
       .mode('hsl')
       .colors(25),
