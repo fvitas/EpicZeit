@@ -40,15 +40,18 @@ export function AddLocation({ onSelect }) {
             <CommandItem key={item.id} value={String(item.id)} onSelect={selectLocation}>
               <span
                 className={cn(
-                  `fi fi-${item.country_code.toLowerCase()}`,
+                  `fi fi-${item?.country_code?.toLowerCase()}`,
                   'h-5 !w-auto aspect-[4/3] mr-2 rounded-sm shadow',
                 )}></span>
               <span>{item.name}</span>
               <span className="text-sm whitespace-break-spaces text-muted-foreground">
                 <When condition={item.admin1 && item.name !== item.country}>
                   {' '}
-                  (<span>{item.admin1 ? item.admin1 : ''}</span>,{' '}
-                  <span>{item.name !== item.country ? item.country : ''}</span>)
+                  (<span>{item.admin1 ? item.admin1 : ''}</span>
+                  <When condition={item.country}>
+                    , <span>{item.name !== item.country ? item.country : ''}</span>
+                  </When>
+                  )
                 </When>
               </span>
             </CommandItem>
