@@ -1,12 +1,15 @@
 import { defaultPalettes } from '@/components/palette/colors.js'
 import { ScrollArea } from '@/components/ui/scroll-area.jsx'
 import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.jsx'
-import { paletteActions } from '@/state/palette.js'
+import { paletteActions, usePaletteSettings } from '@/state/palette.js'
+import { cn } from '@/utils.js'
 import { Tabs } from '@radix-ui/react-tabs'
 import chroma from 'chroma-js'
 import staticPalettes from './static-palettes.json'
 
 export function PalettePicker() {
+  const { currentPalette, previewPalette } = usePaletteSettings()
+
   const loadedPalettes =
     [...new Set(staticPalettes)].map(palette => ({
       id: palette,
@@ -42,7 +45,13 @@ export function PalettePicker() {
               {defaultPalettes.map(palette => (
                 <div
                   key={palette.id}
-                  className="inline-flex w-40 h-10 rounded overflow-hidden cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary shadow-sm"
+                  className={cn(
+                    'inline-flex w-40 h-10 rounded overflow-hidden cursor-pointer hover:ring-2 hover:ring-offset-2 hover:ring-primary shadow-sm',
+                    (previewPalette && previewPalette.id === palette.id) ||
+                      (!previewPalette && currentPalette.id === palette.id)
+                      ? 'ring-2 ring-offset-2 ring-primary'
+                      : '',
+                  )}
                   onClick={() => setDynamicPalette(palette)}>
                   {palette.colors.map((color, index) => (
                     <div className="flex-1" key={palette.id + color + index} style={{ backgroundColor: color }}></div>
@@ -61,7 +70,13 @@ export function PalettePicker() {
               {loadedPalettes.map(palette => (
                 <div
                   key={palette.id}
-                  className="inline-flex rounded overflow-hidden cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary shadow-sm"
+                  className={cn(
+                    'inline-flex rounded overflow-hidden cursor-pointer hover:ring-2 hover:ring-offset-2 hover:ring-primary shadow-sm',
+                    (previewPalette && previewPalette.id === palette.id) ||
+                      (!previewPalette && currentPalette.id === palette.id)
+                      ? 'ring-2 ring-offset-2 ring-primary'
+                      : '',
+                  )}
                   onClick={() => setStaticPalette(palette)}>
                   {palette.colors.map(color => (
                     <div className="w-10 h-10" key={palette.id + color} style={{ backgroundColor: color }}></div>
