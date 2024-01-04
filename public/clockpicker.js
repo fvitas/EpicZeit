@@ -154,8 +154,7 @@
         .on('click', function () {
           self.amOrPm = 'AM'
           $('.clockpicker-span-am-pm').empty().append('AM')
-
-          raiseCallback(self.options.amPmSelect, self.spanHours.text(), self.spanMinutes.text(), self.spanAmPm.text())
+          raiseCallback(self.options.onChange, self.spanHours.text(), self.spanMinutes.text(), self.spanAmPm.text())
         })
         .appendTo(this.amPmBlock)
 
@@ -163,7 +162,7 @@
         .on('click', function () {
           self.amOrPm = 'PM'
           $('.clockpicker-span-am-pm').empty().append('PM')
-          raiseCallback(self.options.amPmSelect, self.spanHours.text(), self.spanMinutes.text(), self.spanAmPm.text())
+          raiseCallback(self.options.onChange, self.spanHours.text(), self.spanMinutes.text(), self.spanAmPm.text())
         })
         .appendTo(this.amPmBlock)
     }
@@ -489,7 +488,9 @@
     this.spanMinutes.html(leadingZero(this.minutes))
 
     if (this.options.twelvehour) {
-      $('.clockpicker-span-am-pm').empty().append('AM')
+      $('.clockpicker-span-am-pm')
+        .empty()
+        .append(value[2].toUpperCase() || 'AM')
     }
 
     // Toggle to hours view
@@ -710,7 +711,7 @@
     var last = this.input.prop('value'),
       value = leadingZero(this.hours) + ':' + leadingZero(this.minutes)
     if (this.options.twelvehour) {
-      value = value + this.amOrPm
+      value = value + ':' + this.amOrPm
     }
 
     this.input.prop('value', value)
