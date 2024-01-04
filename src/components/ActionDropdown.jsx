@@ -79,11 +79,11 @@ export function ActionDropdown() {
             </DropdownMenuItem>
 
             <DropdownMenuItem onClick={() => setShowPalettePicker(true)}>
-              <span>Select color palette</span>
+              <span>Choose a palette</span>
             </DropdownMenuItem>
 
             <DropdownMenuItem onClick={() => setShowCustomPalettePicker(true)}>
-              <span>Custom color palette</span>
+              <span>Make your own palette</span>
             </DropdownMenuItem>
 
             <DropdownMenuItem onClick={() => setShowSettings(true)}>
@@ -157,7 +157,7 @@ export function ActionDropdown() {
             </div>
 
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit">Save settings</Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -166,8 +166,8 @@ export function ActionDropdown() {
       <Dialog open={showPalettePicker} onOpenChange={onPaletteClose}>
         <DialogContent className="max-w-[570px] max-h-[500px] overflow-hidden" showOverlay={false}>
           <DialogHeader>
-            <DialogTitle>Palettes</DialogTitle>
-            <DialogDescription>Customize your epic zeit. Click save when you're done.</DialogDescription>
+            <DialogTitle>Choose a palette</DialogTitle>
+            <DialogDescription>Explore and select the perfect palette that reflects your mood</DialogDescription>
           </DialogHeader>
 
           <PalettePicker />
@@ -175,7 +175,7 @@ export function ActionDropdown() {
           <DialogFooter>
             <div className="flex justify-between items-center mr-auto gap-2">
               <Label className="cursor-pointer" htmlFor="reverse-colors">
-                Reverse colors
+                Reverse color order
               </Label>
               {/*// TODO (filipv): implement this better, on palette change reset this*/}
               <Switch
@@ -189,6 +189,7 @@ export function ActionDropdown() {
             <Button variant="outline" onClick={discardSelectedPalette}>
               Cancel
             </Button>
+
             <Button type="submit" onClick={saveSelectedPalette}>
               Save selected palette
             </Button>
@@ -199,8 +200,10 @@ export function ActionDropdown() {
       <Dialog open={showCustomPalettePicker} onOpenChange={onPaletteClose}>
         <DialogContent className="max-w-[570px] max-h-[500px] overflow-hidden" showOverlay={false}>
           <DialogHeader>
-            <DialogTitle>Create custom palette</DialogTitle>
-            <DialogDescription>Customize your epic zeit. Click save when you're done.</DialogDescription>
+            <DialogTitle>Make your own palette</DialogTitle>
+            <DialogDescription>
+              Unleash your creativity and design a palette that reflects your unique style
+            </DialogDescription>
           </DialogHeader>
 
           <CustomPalettePicker />
@@ -209,6 +212,7 @@ export function ActionDropdown() {
             <Button variant="outline" onClick={discardSelectedPalette}>
               Cancel
             </Button>
+
             <Button type="submit" onClick={saveSelectedPalette}>
               Save custom palette
             </Button>
