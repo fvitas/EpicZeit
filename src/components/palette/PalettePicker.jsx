@@ -27,11 +27,15 @@ export function PalettePicker() {
   return (
     <Tabs defaultValue="dynamic">
       <TabsList>
-        <TabsTrigger value="dynamic">Daylight Palettes</TabsTrigger>
-        <TabsTrigger value="static">Static Palettes</TabsTrigger>
+        <TabsTrigger value="dynamic" tabIndex={0}>
+          Daylight Palettes
+        </TabsTrigger>
+        <TabsTrigger value="static" tabIndex={0}>
+          Static Palettes
+        </TabsTrigger>
       </TabsList>
 
-      <TabsContent value="dynamic">
+      <TabsContent value="dynamic" tabIndex={-1}>
         <div className="w-[calc(100%_+3rem)] h-full -mx-6">
           <ScrollArea className="h-[280px]">
             <div className="flex flex-wrap gap-4 px-6 py-2">
@@ -50,7 +54,7 @@ export function PalettePicker() {
         </div>
       </TabsContent>
 
-      <TabsContent value="static">
+      <TabsContent value="static" tabIndex={-1}>
         <div className="w-[calc(100%_+3rem)] h-full -mx-6">
           <ScrollArea className="h-[280px]">
             <div className="flex flex-wrap gap-4 px-6 py-2">
