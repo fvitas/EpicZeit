@@ -14,7 +14,9 @@ export function Timezones() {
         <div className="flex flex-auto flex-col justify-center items-center p-4">
           <IconWorldSearch size={48} stroke={1} className="text-gray-500" />
           <p className="mt-5 text-lg text-gray-800 dark:text-gray-300">No location added yet</p>
-          <Button className="mt-5">Add home location</Button>
+          <Button size="sm" className="mt-5">
+            Add home location
+          </Button>
         </div>
       </When>
 

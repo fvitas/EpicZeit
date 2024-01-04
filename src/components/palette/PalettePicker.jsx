@@ -28,10 +28,10 @@ export function PalettePicker() {
     <Tabs defaultValue="dynamic">
       <TabsList>
         <TabsTrigger value="dynamic" tabIndex={0}>
-          Daylight Palettes
+          Daylight palettes
         </TabsTrigger>
         <TabsTrigger value="static" tabIndex={0}>
-          Static Palettes
+          Static palettes
         </TabsTrigger>
       </TabsList>
 

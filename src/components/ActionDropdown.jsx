@@ -116,7 +116,7 @@ export function ActionDropdown() {
           <form className="flex-1 flex flex-col gap-2" onSubmit={saveSettings}>
             <DialogHeader>
               <DialogTitle>Settings</DialogTitle>
-              <DialogDescription>Customize your epic zeit. Click save when you're done.</DialogDescription>
+              <DialogDescription>Customize your EpicZeit settings. Click save when you're done.</DialogDescription>
             </DialogHeader>
 
             <div className="grid gap-4 py-4">
@@ -157,7 +157,9 @@ export function ActionDropdown() {
             </div>
 
             <DialogFooter>
-              <Button type="submit">Save settings</Button>
+              <Button size="sm" type="submit">
+                Save settings
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -175,7 +177,7 @@ export function ActionDropdown() {
           <DialogFooter>
             <div className="flex justify-between items-center mr-auto gap-2">
               <Label className="cursor-pointer" htmlFor="reverse-colors">
-                Reverse color order
+                Reverse colors
               </Label>
               {/*// TODO (filipv): implement this better, on palette change reset this*/}
               <Switch
@@ -186,11 +188,11 @@ export function ActionDropdown() {
               />
             </div>
 
-            <Button variant="outline" onClick={discardSelectedPalette}>
+            <Button size="sm" variant="outline" onClick={discardSelectedPalette}>
               Cancel
             </Button>
 
-            <Button type="submit" onClick={saveSelectedPalette}>
+            <Button size="sm" type="submit" onClick={saveSelectedPalette}>
               Save selected palette
             </Button>
           </DialogFooter>
@@ -209,11 +211,11 @@ export function ActionDropdown() {
           <CustomPalettePicker />
 
           <DialogFooter>
-            <Button variant="outline" onClick={discardSelectedPalette}>
+            <Button size="sm" variant="outline" onClick={discardSelectedPalette}>
               Cancel
             </Button>
 
-            <Button type="submit" onClick={saveSelectedPalette}>
+            <Button size="sm" type="submit" onClick={saveSelectedPalette}>
               Save custom palette
             </Button>
           </DialogFooter>
