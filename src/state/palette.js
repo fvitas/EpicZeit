@@ -3,11 +3,7 @@ import { proxy, subscribe, useSnapshot } from 'valtio'
 
 const storedState = localStorage.getItem('epiczeit-palette')
 const defaultState = {
-  currentPalette: {
-    id: 'default',
-    colors: defaultPalettes[0],
-    isDynamic: false,
-  },
+  currentPalette: defaultPalettes[0],
   previewPalette: null,
 }
 
