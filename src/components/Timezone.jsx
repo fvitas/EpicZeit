@@ -8,15 +8,9 @@ import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import chroma from 'chroma-js'
 import dayjs from 'dayjs'
+import { debounce } from 'lodash'
 import { useEffect } from 'react'
 import { When } from 'react-if'
-
-// const colors = chroma.scale(['white', 'blue']).mode('hsl').correctLightness().colors(25)
-// const colors = chroma.scale(['#392467', '#5D3587', '#A367B1', '#FFD1E3']).mode('hsl').correctLightness().colors(25)
-// const colors = chroma.scale(['#222831', '#393E46', '#00ADB5', '#EEEEEE']).mode('hsl').colors(25)
-// lab hsl lch oklab oklch
-// const colors = chroma.scale(['#FFECD6', '#4CB9E7', '#3559E0', '#0F2167']).mode('hsl').correctLightness().colors(25)
-// const colors = chroma.scale(['black', 'red', 'yellow', 'white']).mode('hsl').colors(25)
 
 export function generateTextColor(backgroundColor) {
   let contrastWithWhite = chroma.contrast(backgroundColor, 'white')
@@ -121,7 +115,7 @@ function addSuffix(number) {
 }
 
 function getFormattedTime(timezone, show24h, currentTime) {
-  const formatTime = show24h ? 'ddd D HH mm' : 'ddd D mm hh a'
+  const formatTime = show24h ? 'ddd D HH mm' : 'ddd D hh mm a'
 
   return dayjs.utc(currentTime).tz(timezone).format(formatTime).split(' ')
 }
@@ -144,9 +138,9 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
       placement: 'bottom',
       align: 'left',
       autoclose: true,
-      onChange: ([hours, minutes, amPm]) => {
-        actions.editTimezoneTime(timezone, hours, minutes, amPm)
-      },
+      onChange: debounce(([hours, minutes, amPm = '']) => {
+        actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
+      }, 10),
       onDismiss: () => {
         actions.resetTime()
       },
@@ -156,7 +150,7 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
   return (
     <div
       ref={ref}
-      className="group relative h-full flex-1 space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
+      className="group relative h-full flex-1 min-w-[170px] space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
       style={generateColors(palette, timezone.locations[0].timezone, currentTime)}>
       <div className="text-center">{timezone.locations[0].timezone}</div>
 
@@ -179,7 +173,7 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
             id={`time-${timezone.offset}`}
             className="form-control sr-only"
             tabIndex="-1"
-            value={`${hours}:${minutes}`}
+            value={`${hours}:${minutes}${amPm ? ':' + amPm : ''}`}
             onChange={() => {}}
           />
         </div>

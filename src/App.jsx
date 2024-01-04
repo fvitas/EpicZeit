@@ -3,7 +3,7 @@ import { Timezones } from '@/components/Timezones.jsx'
 
 function App() {
   return (
-    <div className="w-screen h-screen flex flex-nowrap overflow-hidden">
+    <div className="w-screen h-screen flex flex-nowrap overflow-scroll">
       <ActionDropdown />
       <Timezones />
     </div>

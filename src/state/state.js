@@ -69,12 +69,22 @@ function editLocation(location, newLabel) {
 }
 
 function editTimezoneTime(timezone, hours, minutes = '00', amPm = '') {
-  // dayjs.tz('2023-11-18 15:55', 'Asia/Taipei').utc().format()
-  // dayjs.utc('2023-11-18 11:55').tz('Asia/Taipei').format()
-  // dayjs.tz('2023-11-18 15:55', 'Asia/Taipei').tz('Europe/Belgrade').format()
-
   let timezoneName = timezone.locations[0].timezone
-  let newHours = amPm && amPm === 'pm' ? Number(hours) + 12 : Number(hours)
+  let newHours = Number(hours)
+
+  if (amPm) {
+    if (amPm === 'pm') {
+      newHours = Number(hours) + 12
+    }
+
+    if (hours === '12' && amPm === 'am') {
+      newHours = 0
+    }
+
+    if (hours === '12' && amPm === 'pm') {
+      newHours = 12
+    }
+  }
   let newMinutes = Number(minutes)
 
   let currentTimezoneDate = state.currentTime.tz(timezoneName).format('YYYY-MM-DD')
