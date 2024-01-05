@@ -2,13 +2,12 @@ import { AddLocation } from '@/components/AddLocation.jsx'
 import { Timezone } from '@/components/Timezone.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog.jsx'
-import { actions, useHomeTimezone, useTimezoneState } from '@/state/state.js'
+import { actions, useTimezoneState } from '@/state/state.js'
 import { IconWorldSearch } from '@tabler/icons-react'
 import { When } from 'react-if'
 
 export function Timezones() {
   const { currentTime, showResetTime, timezones } = useTimezoneState()
-  const homeTimezone = useHomeTimezone()
 
   return (
     <div className="w-full h-full flex">
@@ -40,7 +39,7 @@ export function Timezones() {
       </When>
 
       {timezones.map(timezone => (
-        <Timezone key={timezone.offset} currentTime={currentTime} timezone={timezone} homeTimezone={homeTimezone} />
+        <Timezone key={timezone.offset} currentTime={currentTime} timezone={timezone} />
       ))}
     </div>
   )

@@ -2,7 +2,7 @@ import { LocationLabelWithDialog } from '@/components/LocationLabelWithDialog.js
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip.jsx'
 import { usePaletteSettings } from '@/state/palette.js'
 import { useTimezoneSettings } from '@/state/settings.js'
-import { actions } from '@/state/state.js'
+import { actions, useHomeTimezone } from '@/state/state.js'
 import { cn } from '@/utils.js'
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
@@ -120,10 +120,12 @@ function getFormattedTime(timezone, show24h, currentTime) {
   return dayjs.utc(currentTime).tz(timezone).format(formatTime).split(' ')
 }
 
-export function Timezone({ currentTime, timezone, homeTimezone }) {
+export function Timezone({ currentTime, timezone }) {
   const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
+  const homeTimezone = useHomeTimezone()
   const { currentPalette, previewPalette } = usePaletteSettings()
   const palette = previewPalette ?? currentPalette
+
   const [ref, rect] = useResizeObserver()
 
   let [weekDay, dayOfTheMonth, hours, minutes, amPm] = getFormattedTime(
