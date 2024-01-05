@@ -1,9 +1,8 @@
-import { AddLocation } from '@/components/AddLocation.jsx'
+import { AddLocationDialog } from '@/components/dialogs/AddLocationDialog.jsx'
 import { CustomPalettePickerDialog } from '@/components/dialogs/CustomPalettePickerDialog.jsx'
 import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
 import { SettingsDialog } from '@/components/dialogs/SettingsDialog.jsx'
 import { Button } from '@/components/ui/button.jsx'
-import { Dialog, DialogContent } from '@/components/ui/dialog.jsx'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -62,20 +61,10 @@ export function ActionDropdown() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Dialog open={showAddLocation} onOpenChange={open => setShowAddLocation(open)}>
-        <DialogContent className="overflow-hidden p-0 shadow-lg">
-          <AddLocation onSelect={() => setShowAddLocation(false)} />
-        </DialogContent>
-      </Dialog>
-
-      <SettingsDialog isOpen={showSettings} onOpenChange={isOpen => setShowSettings(isOpen)} />
-
-      <PalettePickerDialog isOpen={showPalettePicker} onOpenChange={isOpen => setShowPalettePicker(isOpen)} />
-
-      <CustomPalettePickerDialog
-        isOpen={showCustomPalettePicker}
-        onOpenChange={isOpen => setShowCustomPalettePicker(isOpen)}
-      />
+      <AddLocationDialog isOpen={showAddLocation} onOpenChange={setShowAddLocation} />
+      <SettingsDialog isOpen={showSettings} onOpenChange={setShowSettings} />
+      <PalettePickerDialog isOpen={showPalettePicker} onOpenChange={setShowPalettePicker} />
+      <CustomPalettePickerDialog isOpen={showCustomPalettePicker} onOpenChange={setShowCustomPalettePicker} />
     </>
   )
 }
