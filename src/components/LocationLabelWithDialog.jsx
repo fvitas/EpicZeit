@@ -56,8 +56,8 @@ export function LocationLabelWithDialog({ location }) {
           </div>
 
           <DialogFooter className="flex flex-col gap-2 sm:justify-between sm:flex-row-reverse sm:space-x-0 mt-4">
-            <Button type="submit" className="w-32">
-              Save
+            <Button type="submit">
+              <span className="w-32">Save</span>
             </Button>
 
             <Button className="bg-red-500 hover:bg-red-500/90 focus-visible:ring-red-500" onClick={deleteLocation}>
