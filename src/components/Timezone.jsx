@@ -152,8 +152,6 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
       ref={ref}
       className="group relative h-full flex-1 min-w-[190px] space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
       style={generateColors(palette, timezone.locations[0].timezone, currentTime)}>
-      <div className="text-center">{timezone.locations[0].timezone}</div>
-
       <div
         style={{
           fontSize: show24h
@@ -184,7 +182,7 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
       </div>
 
       <When condition={showDate}>
-        <div className="text-center" style={{ fontSize: 'clamp(1rem, 1vw + 0.75rem, 1.5rem)' }}>
+        <div className="text-center" style={{ fontSize: 'clamp(1.3rem, 1vw + 0.75rem, 1.8rem)' }}>
           {weekDay}, {addSuffix(dayOfTheMonth)}
         </div>
       </When>
