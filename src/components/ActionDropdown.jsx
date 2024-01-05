@@ -1,16 +1,9 @@
 import { AddLocation } from '@/components/AddLocation.jsx'
+import { CustomPalettePickerDialog } from '@/components/dialogs/CustomPalettePickerDialog.jsx'
 import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
 import { SettingsDialog } from '@/components/dialogs/SettingsDialog.jsx'
-import { CustomPalettePicker } from '@/components/palette/CustomPalettePicker.jsx'
 import { Button } from '@/components/ui/button.jsx'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog.jsx'
+import { Dialog, DialogContent } from '@/components/ui/dialog.jsx'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +12,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { paletteActions } from '@/state/palette.js'
 import { useState } from 'react'
 
 export function ActionDropdown() {
@@ -27,23 +19,6 @@ export function ActionDropdown() {
   const [showPalettePicker, setShowPalettePicker] = useState(false)
   const [showCustomPalettePicker, setShowCustomPalettePicker] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
-
-  function discardSelectedPalette() {
-    paletteActions.discardPalette()
-    setShowPalettePicker(false)
-    setShowCustomPalettePicker(false)
-  }
-  function saveSelectedPalette() {
-    paletteActions.savePalette()
-    setShowPalettePicker(false)
-    setShowCustomPalettePicker(false)
-  }
-
-  function onPaletteClose() {
-    paletteActions.discardPalette()
-    setShowPalettePicker(false)
-    setShowCustomPalettePicker(false)
-  }
 
   return (
     <>
@@ -97,28 +72,10 @@ export function ActionDropdown() {
 
       <PalettePickerDialog isOpen={showPalettePicker} onOpenChange={isOpen => setShowPalettePicker(isOpen)} />
 
-      <Dialog open={showCustomPalettePicker} onOpenChange={onPaletteClose}>
-        <DialogContent className="max-w-[570px] max-h-[500px] overflow-hidden" showOverlay={false}>
-          <DialogHeader>
-            <DialogTitle>Make your own palette</DialogTitle>
-            <DialogDescription>
-              Unleash your creativity and design a palette that reflects your unique style
-            </DialogDescription>
-          </DialogHeader>
-
-          <CustomPalettePicker />
-
-          <DialogFooter>
-            <Button size="sm" variant="outline" onClick={discardSelectedPalette}>
-              Cancel
-            </Button>
-
-            <Button size="sm" type="submit" onClick={saveSelectedPalette}>
-              Save custom palette
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <CustomPalettePickerDialog
+        isOpen={showCustomPalettePicker}
+        onOpenChange={isOpen => setShowCustomPalettePicker(isOpen)}
+      />
     </>
   )
 }
