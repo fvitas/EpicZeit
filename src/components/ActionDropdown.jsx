@@ -1,7 +1,7 @@
 import { AddLocation } from '@/components/AddLocation.jsx'
+import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
 import { SettingsDialog } from '@/components/dialogs/SettingsDialog.jsx'
 import { CustomPalettePicker } from '@/components/palette/CustomPalettePicker.jsx'
-import { PalettePicker } from '@/components/palette/PalettePicker.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import {
   Dialog,
@@ -19,8 +19,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Label } from '@/components/ui/label.jsx'
-import { Switch } from '@/components/ui/switch.jsx'
 import { paletteActions } from '@/state/palette.js'
 import { useState } from 'react'
 
@@ -97,39 +95,7 @@ export function ActionDropdown() {
 
       <SettingsDialog isOpen={showSettings} onOpenChange={isOpen => setShowSettings(isOpen)} />
 
-      <Dialog open={showPalettePicker} onOpenChange={onPaletteClose}>
-        <DialogContent className="max-w-[570px] max-h-[500px] overflow-hidden" showOverlay={false}>
-          <DialogHeader>
-            <DialogTitle>Choose a palette</DialogTitle>
-            <DialogDescription>Explore and select the perfect palette that reflects your mood</DialogDescription>
-          </DialogHeader>
-
-          <PalettePicker />
-
-          <DialogFooter>
-            <div className="flex justify-between items-center mr-auto gap-2">
-              <Label className="cursor-pointer" htmlFor="reverse-colors">
-                Reverse colors
-              </Label>
-              {/*// TODO (filipv): implement this better, on palette change reset this*/}
-              <Switch
-                id="reverse-colors"
-                name="reverse-colors"
-                defaultChecked={false}
-                onCheckedChange={paletteActions.reversePreviewPalette}
-              />
-            </div>
-
-            <Button size="sm" variant="outline" onClick={discardSelectedPalette}>
-              Cancel
-            </Button>
-
-            <Button size="sm" type="submit" onClick={saveSelectedPalette}>
-              Save selected palette
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <PalettePickerDialog isOpen={showPalettePicker} onOpenChange={isOpen => setShowPalettePicker(isOpen)} />
 
       <Dialog open={showCustomPalettePicker} onOpenChange={onPaletteClose}>
         <DialogContent className="max-w-[570px] max-h-[500px] overflow-hidden" showOverlay={false}>
