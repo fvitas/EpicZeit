@@ -1,6 +1,5 @@
 import { AddLocation } from '@/components/AddLocation.jsx'
 import { Timezone } from '@/components/Timezone.jsx'
-import { defaultPalettes } from '@/components/palette/colors.js'
 import { Button } from '@/components/ui/button.jsx'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog.jsx'
 import { actions, useHomeTimezone, useTimezoneState } from '@/state/state.js'
@@ -15,30 +14,14 @@ export function Timezones() {
     <div className="w-full h-full flex">
       <When condition={timezones.length === 0}>
         <div className="flex flex-auto flex-col justify-center items-center p-4">
-          <div className="fixed top-0 left-0 w-full h-full flex -z-10">
-            {defaultPalettes[1]?.colors.map((color, index) => {
-              return (
-                <div
-                  key={index}
-                  className="flex-1"
-                  style={{
-                    background: `linear-gradient(to bottom, ${color}, ${
-                      defaultPalettes[0]?.colors[(24 + index - 2) % 24]
-                    })`,
-                  }}></div>
-              )
-            })}
-          </div>
-
           <IconWorldSearch size={60} stroke={1} />
 
-          <p className="mt-5 text-2xl drop-shadow-[-1px_1px_1px_white]">No location added yet</p>
+          <p className="mt-5 text-2xl">No location added yet</p>
+          <p className="mt-1 text-lg">Beautiful timezones are waiting for you</p>
 
           <Dialog>
-            <DialogTrigger>
-              <Button size="sm" className="mt-5">
-                Add home location
-              </Button>
+            <DialogTrigger asChild>
+              <Button className="mt-5">Add first location</Button>
             </DialogTrigger>
 
             <DialogContent className="overflow-hidden p-0 shadow-lg">

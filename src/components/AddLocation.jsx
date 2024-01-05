@@ -6,11 +6,11 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { When } from 'react-if'
 
-export function AddLocation({ onSelect }) {
+export function AddLocation(props) {
   const [locationInputValue, setLocationInputValue] = useState('')
   const [debouncedLocationValue] = useDebouncedValue(locationInputValue, 250)
 
-  const { data, isLoading } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['fetchLocation', debouncedLocationValue],
     queryFn: async ({ meta, queryKey, signal }) => {
       let [key, location] = queryKey
@@ -25,7 +25,7 @@ export function AddLocation({ onSelect }) {
   function selectLocation(locationId) {
     const newLocation = data?.results?.find(item => String(item.id) === String(locationId))
     actions.addLocation(newLocation)
-    onSelect()
+    props?.onSelect?.()
   }
 
   return (
@@ -43,7 +43,9 @@ export function AddLocation({ onSelect }) {
                   `fi fi-${item?.country_code?.toLowerCase()}`,
                   'h-5 !w-auto aspect-[4/3] mr-2 rounded-sm shadow',
                 )}></span>
+
               <span>{item.name}</span>
+
               <span className="text-sm whitespace-break-spaces text-muted-foreground">
                 <When condition={item.admin1 && item.name !== item.country}>
                   {' '}
@@ -58,7 +60,7 @@ export function AddLocation({ onSelect }) {
           ))}
         </When>
 
-        <When condition={!data?.results && !isLoading && locationInputValue}>
+        <When condition={!isPending && locationInputValue && !data?.results}>
           <CommandEmpty>No results found.</CommandEmpty>
         </When>
       </CommandList>

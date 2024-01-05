@@ -216,10 +216,10 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
         />
       </div>
 
-      <div className="absolute bottom-10 left-1/2 translate-x-[-50%]">
+      <div className="absolute bottom-10 left-1/2 translate-x-[-50%] text-lg">
         <When condition={offsetFromHome}>
           <When condition={timezone.isHome}>
-            <IconHome size={24} stroke={1.5} />
+            <IconHome size={24} stroke={1.5} className="-translate-y-0.5" />
           </When>
 
           <When condition={!timezone.isHome}>
