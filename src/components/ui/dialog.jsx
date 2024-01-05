@@ -3,7 +3,6 @@ import { IconX } from '@tabler/icons-react'
 import * as React from 'react'
 
 import { cn } from '@/utils'
-import { When } from 'react-if'
 
 const Dialog = DialogPrimitive.Root
 
@@ -27,9 +26,7 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 const DialogContent = React.forwardRef(({ className, showOverlay = true, children, ...props }, ref) => (
   <DialogPortal>
-    <When condition={showOverlay}>
-      <DialogOverlay />
-    </When>
+    {showOverlay ? <DialogOverlay /> : null}
 
     <DialogPrimitive.Content
       ref={ref}
