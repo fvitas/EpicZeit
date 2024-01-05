@@ -43,7 +43,6 @@ export const defaultPalettes = [
   {
     id: 'YlGnBu',
     isDynamic: true,
-    // colors: chroma.scale('YlGnBu').mode('hsl').colors(25),
     colors: chroma
       .scale([
         ...chroma.scale('YlGnBu').padding([-0.1, -0.1]).gamma(1.5).mode('hsl').colors(13).toReversed(),
@@ -67,7 +66,6 @@ export const defaultPalettes = [
   {
     id: 'Viridis',
     isDynamic: true,
-    // colors: chroma.scale('Viridis').mode('hsl').colors(25).toReversed(),
     colors: chroma
       .scale([
         ...chroma.scale('Viridis').padding([-0.5, -0.5]).gamma(1.5).mode('hsl').colors(13),
@@ -79,11 +77,10 @@ export const defaultPalettes = [
   {
     id: 'yellow-navy-2',
     isDynamic: true,
-    // colors: chroma.scale(['yellow', 'navy']).mode('lch').colors(25),
     colors: chroma
       .scale([
-        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(1).mode('lch').colors(13).toReversed(),
-        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(1).mode('lch').colors(13),
+        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(0.7).mode('lch').colors(13).toReversed(),
+        ...chroma.scale(['yellow', 'navy']).padding([-0.3, -0.3]).gamma(0.7).mode('lch').colors(13),
       ])
       .mode('lch')
       .colors(25),
@@ -91,7 +88,6 @@ export const defaultPalettes = [
   {
     id: 'Inferno',
     isDynamic: true,
-    // colors: chroma.scale(inferno).mode('hsl').colors(25).toReversed(),
     colors: chroma
       .scale([
         ...chroma.scale(inferno).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13),
@@ -103,7 +99,6 @@ export const defaultPalettes = [
   {
     id: 'plasma',
     isDynamic: true,
-    // colors: chroma.scale(plasma).mode('hsl').colors(25).toReversed(),
     colors: chroma
       .scale([
         ...chroma.scale(plasma).padding([-0.2, -0.2]).gamma(1.5).mode('hsl').colors(13),
@@ -115,7 +110,6 @@ export const defaultPalettes = [
   {
     id: 'magma',
     isDynamic: true,
-    // colors: chroma.scale(magma).mode('hsl').colors(25).toReversed(),
     colors: chroma
       .scale([
         ...chroma.scale(magma).padding([-0.2, -0.2]).gamma(1).mode('hsl').colors(13),
