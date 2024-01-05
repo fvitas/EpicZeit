@@ -150,12 +150,16 @@ export function Timezone({ currentTime, timezone, homeTimezone }) {
   return (
     <div
       ref={ref}
-      className="group relative h-full flex-1 min-w-[170px] space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
+      className="group relative h-full flex-1 min-w-[190px] space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
       style={generateColors(palette, timezone.locations[0].timezone, currentTime)}>
       <div className="text-center">{timezone.locations[0].timezone}</div>
 
       <div
-        style={{ fontSize: show24h ? 'clamp(1rem, 0.5rem + 3.5vw, 5rem)' : 'clamp(1rem, 0.5rem + 2.5vw, 5rem)' }}
+        style={{
+          fontSize: show24h
+            ? `clamp(2.4rem, calc(${rect.width}px / 3.5), 5rem)`
+            : `clamp(1.7rem, calc(${rect.width}px / 5), 5rem)`,
+        }}
         className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
         <div className={'inline-block ' + 'clockpicker-' + timezone.offset}>
           <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center">

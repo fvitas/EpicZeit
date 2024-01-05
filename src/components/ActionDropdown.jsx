@@ -116,7 +116,7 @@ export function ActionDropdown() {
           <form className="flex-1 flex flex-col gap-2" onSubmit={saveSettings}>
             <DialogHeader>
               <DialogTitle>Settings</DialogTitle>
-              <DialogDescription>Customize your EpicZeit settings. Click save when you're done.</DialogDescription>
+              <DialogDescription>Customize your EpicZeit. Click save when you're done.</DialogDescription>
             </DialogHeader>
 
             <div className="grid gap-4 py-4">
