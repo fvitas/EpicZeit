@@ -1,6 +1,6 @@
 import { generateTextColor } from '@/components/Timezone.jsx'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover.jsx'
-import { paletteActions, usePaletteSettings } from '@/state/palette.js'
+import { actions, useEpicZeitState } from '@/state/state.js'
 import chroma from 'chroma-js'
 import { useState } from 'react'
 import { HexColorInput, HexColorPicker } from 'react-colorful'
@@ -40,7 +40,7 @@ function PopoverPicker({ color, setColor }) {
 }
 
 export function CustomPalettePicker() {
-  const { currentPalette } = usePaletteSettings()
+  const { currentPalette } = useEpicZeitState()
   const colors = chroma.scale(currentPalette.colors).mode('hsl').colors(4)
 
   const [customColors, setCustomColors] = useState({ 0: colors[0], 1: colors[1], 2: colors[2], 3: colors[3] })
@@ -49,7 +49,7 @@ export function CustomPalettePicker() {
     const newColors = { ...customColors, [index]: color }
     setCustomColors(newColors)
 
-    paletteActions.setPreviewPalette({
+    actions.setPreviewPalette({
       id: crypto.randomUUID(),
       colors: chroma.scale(Object.values(newColors)).mode('hsl').colors(25),
     })

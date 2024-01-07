@@ -8,15 +8,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog.jsx'
-import { paletteActions } from '@/state/palette.js'
+import { actions } from '@/state/state.js'
 
 export function CustomPalettePickerDialog({ isOpen, onOpenChange }) {
   function discardSelectedPalette() {
-    paletteActions.discardPalette()
+    actions.discardPalette()
     onOpenChange(false)
   }
   function saveSelectedPalette() {
-    paletteActions.savePalette()
+    actions.savePalette()
     onOpenChange(false)
   }
 

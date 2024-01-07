@@ -1,8 +1,7 @@
 import { LocationLabelWithDialog } from '@/components/LocationLabelWithDialog.jsx'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip.jsx'
-import { usePaletteSettings } from '@/state/palette.js'
 import { useTimezoneSettings } from '@/state/settings.js'
-import { actions, useHomeTimezone } from '@/state/state.js'
+import { actions, useEpicZeitState, useHomeTimezone } from '@/state/state.js'
 import { cn } from '@/utils.js'
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
@@ -123,7 +122,7 @@ function getFormattedTime(timezone, show24h, currentTime) {
 export function Timezone({ currentTime, timezone }) {
   const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
   const homeTimezone = useHomeTimezone()
-  const { currentPalette, previewPalette } = usePaletteSettings()
+  const { currentPalette, previewPalette } = useEpicZeitState()
   const palette = previewPalette ?? currentPalette
 
   const [ref, rect] = useResizeObserver()

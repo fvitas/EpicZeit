@@ -2,6 +2,7 @@ import { AddLocationDialog } from '@/components/dialogs/AddLocationDialog.jsx'
 import { CustomPalettePickerDialog } from '@/components/dialogs/CustomPalettePickerDialog.jsx'
 import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
 import { SettingsDialog } from '@/components/dialogs/SettingsDialog.jsx'
+import { ShareDialog } from '@/components/share/ShareDialog.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import {
   DropdownMenu,
@@ -18,6 +19,7 @@ export function ActionDropdown() {
   const [showPalettePicker, setShowPalettePicker] = useState(false)
   const [showCustomPalettePicker, setShowCustomPalettePicker] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  const [showShare, setShowShare] = useState(false)
 
   return (
     <>
@@ -45,6 +47,10 @@ export function ActionDropdown() {
             <DropdownMenuItem onClick={() => setShowSettings(true)}>
               <span>Settings</span>
             </DropdownMenuItem>
+
+            <DropdownMenuItem onClick={() => setShowShare(true)}>
+              <span>Share</span>
+            </DropdownMenuItem>
           </DropdownMenuGroup>
 
           <DropdownMenuGroup>
@@ -62,9 +68,14 @@ export function ActionDropdown() {
       </DropdownMenu>
 
       <AddLocationDialog isOpen={showAddLocation} onOpenChange={setShowAddLocation} />
+
       <SettingsDialog isOpen={showSettings} onOpenChange={setShowSettings} />
+
       <PalettePickerDialog isOpen={showPalettePicker} onOpenChange={setShowPalettePicker} />
+
       <CustomPalettePickerDialog isOpen={showCustomPalettePicker} onOpenChange={setShowCustomPalettePicker} />
+
+      <ShareDialog isOpen={showShare} onOpenChange={setShowShare} />
     </>
   )
 }

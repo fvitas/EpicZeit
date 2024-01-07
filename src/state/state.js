@@ -1,27 +1,51 @@
-import { proxy, subscribe, useSnapshot } from 'valtio'
-
+import { defaultPalettes } from '@/components/palette/colors.js'
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone.js'
 import utc from 'dayjs/plugin/utc.js'
+import { decompressFromEncodedURIComponent } from 'lz-string'
+import { proxy, subscribe, useSnapshot } from 'valtio'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const storedState = localStorage.getItem('state')
-const defaultState = {
+const searchParams = new URLSearchParams(location.search)
+
+if (searchParams.get('share')) {
+  try {
+    const compressedStateString = decompressFromEncodedURIComponent(searchParams.get('share'))
+    const { timezones, currentPalette } = JSON.parse(compressedStateString)
+
+    localStorage.setItem(
+      'epiczeit-state',
+      JSON.stringify({
+        currentTime: dayjs.utc(),
+        showResetTime: false,
+        timezones,
+        currentPalette,
+        previewPalette: null,
+      }),
+    )
+
+    history.pushState({}, document.title, location.pathname)
+  } catch {}
+}
+
+const storedState = localStorage.getItem('epiczeit-state')
+
+let initialState = {
   currentTime: dayjs.utc(),
   showResetTime: false,
   timezones: [],
+  currentPalette: defaultPalettes[0],
+  previewPalette: null,
 }
-let initialState = defaultState
+
 if (storedState) {
   initialState = JSON.parse(storedState)
-  initialState.currentTime = dayjs(initialState.currentTime).utc()
+  initialState.currentTime = dayjs(storedState.currentTime).utc()
 }
 
 const state = proxy(initialState)
-
-function setState(newState) {}
 
 function getOffsetInMinutes(timezone, date = new Date()) {
   let formatter = new Intl.DateTimeFormat('en-GB', {
@@ -109,8 +133,28 @@ function changeHome(timezone) {
   })
 }
 
+function setPreviewPalette(newPalette) {
+  state.previewPalette = newPalette
+}
+
+function savePalette() {
+  if (state.previewPalette) {
+    state.currentPalette = state.previewPalette
+  }
+  state.previewPalette = null
+}
+
+function discardPalette() {
+  state.previewPalette = null
+}
+
+function reversePreviewPalette() {
+  if (state.previewPalette && !state.previewPalette.isDynamic) {
+    state.previewPalette.colors.reverse()
+  }
+}
+
 export const actions = {
-  setState,
   addLocation: addLocation,
   deleteLocation: deleteLocation,
   editLocation: editLocation,
@@ -118,9 +162,15 @@ export const actions = {
   deleteTimezone: deleteTimezone,
   resetTime: resetTime,
   changeHome: changeHome,
+
+  // palettes actions
+  setPreviewPalette: setPreviewPalette,
+  savePalette: savePalette,
+  discardPalette: discardPalette,
+  reversePreviewPalette: reversePreviewPalette,
 }
 
-export function useTimezoneState() {
+export function useEpicZeitState() {
   return useSnapshot(state)
 }
 
@@ -138,5 +188,5 @@ setInterval(() => {
 }, 5_000)
 
 subscribe(state, () => {
-  localStorage.setItem('state', JSON.stringify(state))
+  localStorage.setItem('epiczeit-state', JSON.stringify(state))
 })

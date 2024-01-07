@@ -2,12 +2,12 @@ import { AddLocation } from '@/components/AddLocation.jsx'
 import { Timezone } from '@/components/Timezone.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog.jsx'
-import { actions, useTimezoneState } from '@/state/state.js'
+import { actions, useEpicZeitState } from '@/state/state.js'
 import { IconWorldSearch } from '@tabler/icons-react'
 import { When } from 'react-if'
 
 export function Timezones() {
-  const { currentTime, showResetTime, timezones } = useTimezoneState()
+  const { currentTime, showResetTime, timezones } = useEpicZeitState()
 
   return (
     <div className="w-full h-full flex">

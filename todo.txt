@@ -3,18 +3,47 @@
 ✅ add choose palette side menu
 ✅ show which timezone is home
 ✅ proper +- timezone offset from home -> put it to settings ?
-- implement your own timepicker
 ❌ add virtualizer for timezones - no, decrease palette number
 
-- mark selected theme
 ✅ proper implentation of time change
-- update daylight theme
+✅ update daylight theme
 ✅ use dayjs
-- uninstall unused dependencies
+✅ uninstall unused dependencies
+✅ am pm time change doesnt work
 
-- test it in extension
-- buy domain, build some small site
+✅ add location button when no location provided
+- ios 14px zoom fix ???
+- add location does not work on mobile
+- implement your own timepicker
+✅ mark selected palette
+- custom palette copy paste
+- share timezone, gzip state and make share url
+
+- put some sane limits
+- add zod to validate share
+- pwa
+
+✅ font size for time should depend on timezone width
+clamp(2rem, ??? , 5rem)
+
+❌ auto animate?
+❌ change theme light/dark, maybe not
+
+- logo and favicons
+- readme
+
+- better empty state, first add location
+
+- build separate for chrome extension and web ui
+if (process.env.CHROME_EXTENSION === true) show dropdown items
+- disable reverse when dynamic tab
+
+"no bullshit, just beautiful timezones"
+
+✅ test it in extension
 - publish extension to store
+- deploy as app
+- buy domain, build some small static site
 
-- create twitter account
+- create Twitter account
 - start sharing / promoting

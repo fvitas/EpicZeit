@@ -1,14 +1,14 @@
 import { defaultPalettes } from '@/components/palette/colors.js'
 import { ScrollArea } from '@/components/ui/scroll-area.jsx'
 import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.jsx'
-import { paletteActions, usePaletteSettings } from '@/state/palette.js'
+import { actions, useEpicZeitState } from '@/state/state.js'
 import { cn } from '@/utils.js'
 import { Tabs } from '@radix-ui/react-tabs'
 import chroma from 'chroma-js'
 import staticPalettes from './static-palettes.json'
 
 export function PalettePicker() {
-  const { currentPalette, previewPalette } = usePaletteSettings()
+  const { currentPalette, previewPalette } = useEpicZeitState()
 
   const loadedPalettes =
     [...new Set(staticPalettes)].map(palette => ({
@@ -17,11 +17,11 @@ export function PalettePicker() {
     })) ?? []
 
   function setDynamicPalette(newPalette) {
-    paletteActions.setPreviewPalette(newPalette)
+    actions.setPreviewPalette(newPalette)
   }
 
   function setStaticPalette(newPalette) {
-    paletteActions.setPreviewPalette({
+    actions.setPreviewPalette({
       id: newPalette.id,
       colors: chroma.scale(newPalette.colors).mode('hsl').colors(25),
     })

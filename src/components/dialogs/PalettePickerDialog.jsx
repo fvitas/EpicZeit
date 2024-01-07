@@ -10,15 +10,15 @@ import {
 } from '@/components/ui/dialog.jsx'
 import { Label } from '@/components/ui/label.jsx'
 import { Switch } from '@/components/ui/switch.jsx'
-import { paletteActions } from '@/state/palette.js'
+import { actions } from '@/state/state.js'
 
 export function PalettePickerDialog({ isOpen, onOpenChange }) {
   function discardSelectedPalette() {
-    paletteActions.discardPalette()
+    actions.discardPalette()
     onOpenChange(false)
   }
   function saveSelectedPalette() {
-    paletteActions.savePalette()
+    actions.savePalette()
     onOpenChange(false)
   }
 
@@ -42,7 +42,7 @@ export function PalettePickerDialog({ isOpen, onOpenChange }) {
               id="reverse-colors"
               name="reverse-colors"
               defaultChecked={false}
-              onCheckedChange={paletteActions.reversePreviewPalette}
+              onCheckedChange={actions.reversePreviewPalette}
             />
           </div>
 
