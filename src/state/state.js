@@ -180,8 +180,13 @@ export function useHomeTimezone() {
   return timezones.find(timezone => timezone.isHome)
 }
 
+addEventListener('focus', () => {
+  if (!state.showResetTime) {
+    state.currentTime = dayjs().utc()
+  }
+})
+
 setInterval(() => {
-  // TODO (filipv): check if time changed, driftless npm
   if (!state.showResetTime) {
     state.currentTime = dayjs().utc()
   }
