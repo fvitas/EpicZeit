@@ -15,8 +15,8 @@
   "scripts": {
     "dev": "vite",
     "watch": "vite build -w",
-    "build": "vite build",
-    "build-extension": "vite build && cp src/manifest.json dist/",
+    "build": "vite build --mode web",
+    "build-extension": "vite build --mode extension && cp src/manifest.json dist/",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

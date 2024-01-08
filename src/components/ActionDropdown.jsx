@@ -53,17 +53,22 @@ export function ActionDropdown() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
 
-          <DropdownMenuGroup>
-            <DropdownMenuItem onClick={() => window?.chrome?.tabs?.update({ url: 'chrome://new-tab-page' })}>
-              <span>Open default new page</span>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
+          {import.meta.env.VITE_APP_ENV === 'extension' ? (
+            <>
+              <DropdownMenuSeparator />
 
-          <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => window?.chrome?.tabs?.update({ url: 'chrome://new-tab-page' })}>
+                <span>Open default new page</span>
+              </DropdownMenuItem>
 
-          <DropdownMenuItem onClick={() => window?.chrome?.management?.setEnabled(window?.chrome?.runtime?.id, false)}>
-            <span>Disable extension</span>
-          </DropdownMenuItem>
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem
+                onClick={() => window?.chrome?.management?.setEnabled(window?.chrome?.runtime?.id, false)}>
+                <span>Disable extension</span>
+              </DropdownMenuItem>
+            </>
+          ) : null}
         </DropdownMenuContent>
       </DropdownMenu>
 
