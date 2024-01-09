@@ -7,7 +7,7 @@ import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import chroma from 'chroma-js'
 import dayjs from 'dayjs'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce.js'
 import { useEffect } from 'react'
 import { When } from 'react-if'
 
@@ -164,7 +164,7 @@ export function Timezone({ currentTime, timezone }) {
           <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center">
             <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
             <span>:</span>
-            <span className="">
+            <span>
               {minutes}
               <When condition={!show24h}>
                 <span className="text-3xl">{amPm}</span>
