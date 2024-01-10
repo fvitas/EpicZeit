@@ -180,6 +180,10 @@ export function useHomeTimezone() {
   return timezones.find(timezone => timezone.isHome)
 }
 
+addEventListener('beforeunload', () => {
+  state.previewPalette = null
+})
+
 addEventListener('focus', () => {
   if (!state.showResetTime) {
     state.currentTime = dayjs().utc()
