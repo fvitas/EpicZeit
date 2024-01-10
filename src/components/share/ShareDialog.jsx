@@ -26,7 +26,7 @@ export function ShareDialog({ isOpen, onOpenChange }) {
       <DialogContent className="max-w-[550px] max-h-[300px] overflow-hidden">
         <DialogHeader>
           <DialogTitle>Share your timezones with others</DialogTitle>
-          <DialogDescription>Anyone who has this link will be able to recreate your timezones.</DialogDescription>
+          <DialogDescription>Anyone who has this link will be able to recreate your timezones</DialogDescription>
         </DialogHeader>
 
         <div className="flex items-center gap-2 pt-2">
