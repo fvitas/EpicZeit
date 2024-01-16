@@ -1,29 +1,60 @@
 <!doctype html>
 <html lang="en" class="antialiased h-full scroll-smooth">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Epic Zeit</title>
+    <meta name="description" content="Epic way to sync timezones among colleagues, friends, and family across the globe."/>
+
     <meta name="robots" content="index,follow"/>
     <meta name="googlebot" content="index,follow"/>
-    <meta name="description" content="Welcome to nine4 homepage."/>
-    <meta property="og:url" content="https://nine4-2.vercel.app/"/>
-    <meta property="og:title" content="Home: nine4"/>
-    <meta property="og:description" content="Welcome to nine4 homepage."/>
-    <link rel="canonical" href="https://nine4-2.vercel.app/"/>
-    <title>nine4</title>
-    <link rel="icon" href="https://nine4-2.vercel.app/favicon.ico"/>
-    <meta name="next-head-count" content="11"/>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://epiczeit.com"/>
+    <meta property="og:title" content="Epic Zeit - Beautiful time zones"/>
+    <meta property="og:description" content="Epic way to sync timezones among colleagues, friends, and family across the globe."/>
+    <meta property="og:image" content="/assets/localhost_1.png">
+
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Epic Zeit - Beautiful time zones">
+    <meta property="twitter:description" content="Epic way to sync timezones among colleagues, friends, and family across the globe.">
+    <meta property="twitter:image" content="assets/localhost_1.png">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="apple-mobile-web-app-title" content="Epic Zeit">
+
+    <link rel="icon" sizes="192x192" href="/favicon/android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#446abe">
+    <meta name="theme-color" content="#446abe">
+
     <link rel="stylesheet" href="assets/82f24a0af9f907c44105.css"/>
 
     <link rel="stylesheet" href="./style.css" type="text/css"/>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background-image: url(https://www.outerbase.com/images/visuals/stars.svg);
+        /*background-image: url(https://careerspage.vercel.app/_next/static/media/blur.97ff1138.svg);*/
+        background-position: 0px 0px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #020817;
+        color: white !important;
+      }
+    </style>
   </head>
 
-  <body class="light">
+  <body class="light bg-neutral-800">
 
     <header id="navbar"
-            class="fixed top-0 w-full z-30 clearNav md:bg-opacity-90">
-<!--            class="animate-header-slide-down-fade backdrop-blur-md backdrop-blur-sm bg-black/50 border-b border-transparent border-white/10 duration-200 ease-in-out sticky top-0 transition">-->
+            class="sticky top-0 backdrop-blur-md bg-neutral-800/50 z-50">
+<!--            class="fixed top-0 w-full z-30 clearNav md:bg-opacity-90">-->
 
       <div class="flex max-w-6xl max-w-screen-xl mx-auto items-center justify-between p-4 sm:px-8">
 
@@ -31,7 +62,7 @@
         <div class="flex flex-shrink-0 items-center justify-between">
           <a href="/" class="flex items-center gap-2 text-lg font-semibold rounded-lg tracking-widest focus:outline-none focus:shadow-outline">
             <img src="/favicon/logo.svg" alt="logo" class="w-12 h-12"/>
-            <h1 class="text-3xl Avenir tracking-tighter text-gray-900 lg:text-4xl">Epic Zeit</h1>
+            <h1 class="text-3xl Avenir tracking-tighter lg:text-4xl text-white">Epic Zeit</h1>
           </a>
         </div>
 
@@ -39,7 +70,7 @@
         <div class="flex flex-grow items-center">
           <nav class="flex-col flex-grow">
 
-            <ul class="flex flex-grow justify-end flex-wrap items-center space-x-4 text-muted-foreground">
+            <ul class="flex flex-grow justify-end flex-wrap items-center space-x-4 text-white">
               <li class="w-8 flex">
                 <a href="https://github.com/fvitas/EpicZeit" rel="noreferrer" target="_blank" class="transition hover:opacity-75">
                   <span class="sr-only">GitHub</span>
@@ -59,8 +90,7 @@
               </li>
 
               <li>
-                <a href="/app/"
-                   class="flex flex-shrink-0 whitespace-nowrap items-center h-9 text-sm px-4 py-2 ml-2 rounded-lg text-white bg-blue-600 !bg-[oklch(60%_0.24_255)]">Get started</a>
+                <a href="/app/" class="flex flex-shrink-0 whitespace-nowrap items-center h-9 text-sm px-4 py-2 ml-2 rounded-lg text-white bg-[#008fff] bg-[oklch(60%_0.24_255)]">Get started</a>
               </li>
             </ul>
           </nav>
@@ -70,78 +100,69 @@
 
     <main>
 
-    <section id="hero" class="min-h-[100vh] body-font px-4">
-      <div class="max-w-7xl mx-auto flex pt-40 pb-12 md:flex-row flex-col items-center">
-        <div class="flex-grow md:w-1/2 md:ml-24 flex flex-col md:items-start md:text-left items-center text-center">
-          <h1 class="mb-5 sm:text-6xl text-5xl items-center Avenir xl:w-2/2 text-gray-900">
-            <span>No bullshit,</span>
-            <br>
-            <span>just beautiful time zones</span>
-          </h1>
+      <section id="hero" class="min-h-[100vh] px-4">
+        <div class="max-w-7xl mx-auto flex pt-24 pb-12 md:flex-row flex-col items-center">
+          <div class="flex-grow md:w-1/2 md:ml-24 flex flex-col md:items-start md:text-left items-center text-center">
+            <h1 class="mb-5 sm:text-6xl text-5xl items-center Avenir xl:w-2/2 text-white">
+              <span>No bullshit,</span>
+              <br>
+              <span>just beautiful time zones</span>
+            </h1>
 
-          <p class="text-muted-foreground text-lg">
-            Epic Zeit is a beautiful free open-source web app and extension that simplifies tracking time zones among colleagues, friends, and family worldwide.
-          </p>
+            <p class="text-lg text-white">
+              Epic Zeit is a beautiful free open-source web app and extension that simplifies tracking time zones among colleagues, friends, and family worldwide.
+            </p>
 
-          <a href="/app/" class="flex items-center h-11 px-8 py-4 mt-4 my-16 rounded-lg text-white bg-blue-600 !bg-[oklch(60%_0.24_255)]">Explore now</a>
+            <a href="/app/" class="flex items-center h-11 px-8 py-4 mt-8 mb-16 rounded-lg text-white bg-[#008fff] bg-[oklch(60%_0.24_255)]">Explore now</a>
 
-          <div class="flex items-center gap-2 text-muted-foreground">
-            <p>Available extensions for:</p>
-            <a target="_blank" href="/chrome">
-              <img class="w-6 h-6" alt="Chrome extension logo" src="https://storage.googleapis.com/brandflow-bucket/brandbird/home/chrome-logo.svg"/>
-            </a>
+            <div class="flex items-center gap-2 text-white">
+              <p>Available extensions for:</p>
+              <a target="_blank" href="/chrome">
+                <img class="w-6 h-6" alt="Chrome extension logo" src="https://storage.googleapis.com/brandflow-bucket/brandbird/home/chrome-logo.svg"/>
+              </a>
+            </div>
+          </div>
+
+          <div class="mx-0 mt-10 md:mt-0 lg:mx-10 xl:mr-20">
+            <img class="w-80" alt="iPhone-14" src="assets/chrome-ios.png" fetchpriority="high" loading="eager"/>
           </div>
         </div>
-
-        <div class="mx-0 mt-10 md:mt-0 lg:mx-10 xl:mr-20">
-          <img class="w-80" alt="iPhone-14" src="assets/chrome-ios.png" fetchpriority="high" loading="eager"/>
-        </div>
-      </div>
-    </section>
+      </section>
 
 
-<!--    <section id="trusted" class="mx-auto px-4 sm:px-20 py-20 bg-gray-50">-->
-<!--      <div class="flex flex-col w-full mb-4 text-left lg:text-center">-->
-<!--        <h1 class="mb-8 text-2xl text-black">Trusted by top-tier product companies</h1>-->
-<!--      </div>-->
-
-<!--      <div class="grid grid-cols-2 gap-16 mb-16 text-center lg:grid-cols-4">-->
-<!--        <div class="flex items-center justify-center">-->
-<!--          <img src="./assets/Google-Logo.webp" alt="Google Logo" class="block object-contain h-16 greyC"/>-->
+<!--      <section id="trusted" class="mx-auto px-4 sm:px-20 pt-20 pb-10 bg-gray-50">-->
+<!--        <div class="flex flex-col w-full mb-4 text-left lg:text-center">-->
+<!--          <h1 class="mb-8 text-2xl text-black">Trusted by top-tier product companies</h1>-->
 <!--        </div>-->
 
-<!--        <div class="flex items-center justify-center">-->
-<!--          <img src="./assets/Shopify-Logo.svg" alt="Shopify Logo" class="block object-contain h-16 greyC"/>-->
-<!--        </div>-->
+<!--        <div class="grid grid-cols-2 gap-16 mb-16 text-center lg:grid-cols-4">-->
+<!--          <div class="flex items-center justify-center">-->
+<!--            <img src="./assets/Google-Logo.webp" alt="Google Logo" class="block object-contain h-16 greyC"/>-->
+<!--          </div>-->
 
-<!--        <div class="flex items-center justify-center">-->
-<!--          <img-->
-<!--            src="./assets/Cloudflare-Logo.svg"-->
-<!--            alt="Cloudflare Logo"-->
-<!--            class="block object-contain h-16 greyC"-->
-<!--          />-->
-<!--        </div>-->
-<!--        <div class="flex items-center justify-center">-->
-<!--          <img src="./assets/PayPal-Logo.png" alt="Paypal Logo" class="block object-contain h-16 greyC"/>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
+<!--          <div class="flex items-center justify-center">-->
+<!--            <img src="./assets/Shopify-Logo.svg" alt="Shopify Logo" class="block object-contain h-16 greyC"/>-->
+<!--          </div>-->
 
-      <section id="features" class='relative flex flex-col min-h-screen overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32'>
-        <img alt=""
-             loading="lazy"
-             width="2245"
-             height="1636"
-             decoding="async"
-             data-nimg="1"
-             class="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
-             style="color:transparent"
-             src="https://salient.tailwindui.com/_next/static/media/background-features.5f7a9ac9.jpg"/>
+<!--          <div class="flex items-center justify-center">-->
+<!--            <img-->
+<!--              src="./assets/Cloudflare-Logo.svg"-->
+<!--              alt="Cloudflare Logo"-->
+<!--              class="block object-contain h-16 greyC"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="flex items-center justify-center">-->
+<!--            <img src="./assets/PayPal-Logo.png" alt="Paypal Logo" class="block object-contain h-16 greyC"/>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </section>-->
 
+
+      <section id="features" class='relative flex flex-col min-h-screen overflow-hidden pb-28'>
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
           <div class="max-w-4xl md:mx-auto md:text-center xl:max-w-none">
             <h2 class="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">No more headaches with time differences</h2>
-            <p class="mt-6 text-lg tracking-tight text-blue-100">Find the perfect time for the meeting across multiple time zones without the need for complicated calculations</p>
+            <p class="mt-6 text-lg tracking-tight">Find the perfect time for the meeting across multiple time zones without the need for complicated calculations</p>
           </div>
         </div>
 
@@ -149,21 +170,21 @@
           <li class="w-80">
             <input class="peer sr-only" type="radio" value="full" name="answer" id="full" checked />
             <label class="group relative flex flex-col rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 lg:ring-white/10 hover:bg-white/10 lg:hover:bg-white/5 peer-checked:lg:ring-1 peer-checked:lg:ring-inset peer-checked:bg-white peer-checked:lg:bg-white/10" for="full" tabindex="0">
-              <div class="font-display text-lg ui-not-focus-visible:outline-none text-blue-600 lg:text-white" role="tab">
+              <div class="font-display text-lg ui-not-focus-visible:outline-none lg:text-white" role="tab">
                 <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Beautiful interface
               </div>
-<!--              <p class="mt-2 hidden text-sm lg:block text-white">Keep track of everyone's time</p>-->
+  <!--              <p class="mt-2 hidden text-sm lg:block text-white">Keep track of everyone's time</p>-->
             </label>
 
             <div class="absolute top-0 left-72 ml-8 rounded-lg transition-all duration-500 ease-in-out translate-x-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0">
               <figure class="relative max-w-full w-[60rem] h-auto -mt-14 rounded-b-lg shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24">
                   <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
                   </div>
-                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">epiczeit.com</div>
+                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-300 rounded-sm sm:text-[.5rem]">epiczeit.com</div>
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
@@ -176,20 +197,20 @@
           <li class="w-80">
             <input class="peer sr-only" type="radio" value="palettes" name="answer" id="palettes" />
             <label class="group relative flex flex-col rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 lg:ring-white/10 hover:bg-white/10 lg:hover:bg-white/5 peer-checked:lg:ring-1 peer-checked:lg:ring-inset peer-checked:bg-white peer-checked:lg:bg-white/10" for="palettes" tabindex="0">
-              <div class="font-display text-lg ui-not-focus-visible:outline-none text-blue-600 lg:text-white" role="tab">
+              <div class="font-display text-lg ui-not-focus-visible:outline-none lg:text-white" role="tab">
                 <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Explore and select a palette
               </div>
             </label>
 
             <div class="absolute top-0 left-72 ml-8 rounded-lg transition-all duration-500 ease-in-out translate-x-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0">
               <figure class="relative max-w-full w-[60rem] h-auto -mt-14 rounded-b-lg shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24">
                   <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
                   </div>
-                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">epiczeit.com</div>
+                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-300 rounded-sm sm:text-[.5rem]">epiczeit.com</div>
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
@@ -202,20 +223,20 @@
           <li class="w-80">
             <input class="peer sr-only" type="radio" value="custom-palette" name="answer" id="custom-palette" />
             <label class="group relative flex flex-col rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 lg:ring-white/10 hover:bg-white/10 lg:hover:bg-white/5 peer-checked:lg:ring-1 peer-checked:lg:ring-inset peer-checked:bg-white peer-checked:lg:bg-white/10" for="custom-palette" tabindex="0">
-              <div class="font-display text-lg ui-not-focus-visible:outline-none text-blue-600 lg:text-white" role="tab">
+              <div class="font-display text-lg ui-not-focus-visible:outline-none lg:text-white" role="tab">
                 <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Create your own palette
               </div>
             </label>
 
             <div class="absolute top-0 left-72 ml-8 rounded-lg transition-all duration-500 ease-in-out translate-x-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0">
               <figure class="relative max-w-full w-[60rem] h-auto -mt-14 rounded-b-lg shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24">
                   <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
                   </div>
-                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">epiczeit.com</div>
+                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-300 rounded-sm sm:text-[.5rem]">epiczeit.com</div>
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
@@ -228,20 +249,20 @@
           <li class="w-80">
             <input class="peer sr-only" type="radio" value="search-location" name="answer" id="search-location" />
             <label class="group relative flex flex-col rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 lg:ring-white/10 hover:bg-white/10 lg:hover:bg-white/5 peer-checked:lg:ring-1 peer-checked:lg:ring-inset peer-checked:bg-white peer-checked:lg:bg-white/10" for="search-location" tabindex="0">
-              <div class="font-display text-lg ui-not-focus-visible:outline-none text-blue-600 lg:text-white" role="tab">
+              <div class="font-display text-lg ui-not-focus-visible:outline-none lg:text-white" role="tab">
                 <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Fine any location on the Earth
               </div>
             </label>
 
             <div class="absolute top-0 left-72 ml-8 rounded-lg transition-all duration-500 ease-in-out translate-x-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0">
               <figure class="relative max-w-full w-[60rem] h-auto -mt-14 rounded-b-lg shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24">
                   <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
                   </div>
-                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">epiczeit.com</div>
+                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-300 rounded-sm sm:text-[.5rem]">epiczeit.com</div>
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
@@ -254,20 +275,20 @@
           <li class="w-80">
             <input class="peer sr-only" type="radio" value="settings" name="answer" id="settings" />
             <label class="group relative flex flex-col rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 lg:ring-white/10 hover:bg-white/10 lg:hover:bg-white/5 peer-checked:lg:ring-1 peer-checked:lg:ring-inset peer-checked:bg-white peer-checked:lg:bg-white/10" for="settings" tabindex="0">
-              <div class="font-display text-lg ui-not-focus-visible:outline-none text-blue-600 lg:text-white" role="tab">
+              <div class="font-display text-lg ui-not-focus-visible:outline-none lg:text-white" role="tab">
                 <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Customize your time zones
               </div>
             </label>
 
             <div class="absolute top-0 left-72 ml-8 rounded-lg transition-all duration-500 ease-in-out translate-x-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0">
               <figure class="relative max-w-full w-[60rem] h-auto -mt-14 rounded-b-lg shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24">
                   <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
                   </div>
-                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">epiczeit.com</div>
+                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-300 rounded-sm sm:text-[.5rem]">epiczeit.com</div>
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
@@ -280,20 +301,20 @@
           <li class="w-80">
             <input class="peer sr-only" type="radio" value="share-time-zones" name="answer" id="share-time-zones" />
             <label class="group relative flex flex-col rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 lg:ring-white/10 hover:bg-white/10 lg:hover:bg-white/5 peer-checked:lg:ring-1 peer-checked:lg:ring-inset peer-checked:bg-white peer-checked:lg:bg-white/10" for="share-time-zones" tabindex="0">
-              <div class="font-display text-lg ui-not-focus-visible:outline-none text-blue-600 lg:text-white" role="tab">
+              <div class="font-display text-lg ui-not-focus-visible:outline-none lg:text-white" role="tab">
                 <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Share your time zones with others
               </div>
             </label>
 
             <div class="absolute top-0 left-72 ml-8 rounded-lg transition-all duration-500 ease-in-out translate-x-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0">
               <figure class="relative max-w-full w-[60rem] h-auto -mt-14 rounded-b-lg shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div class="relative flex items-center bg-gray-800 rounded-t-lg py-2 px-24">
                   <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span class="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
                   </div>
-                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">epiczeit.com</div>
+                  <div class="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-300 rounded-sm sm:text-[.5rem]">epiczeit.com</div>
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
@@ -305,209 +326,227 @@
         </ul>
       </section>
 
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 225"
+           class="relative top-[1px] stroke-[#f8fafc] fill-[#f8fafc]" style="scale:-1 1">
+        <path d="M1920 167.6V225H0v-20.9q50.7 0 100.9-7.8c41.2-6.4 81.8-16.2 122-27.7l82-23.4q28.2-8 57.9-14.7 26.1-5.9 55.2-10 59-8.3 118.3-1.3c11.4 1.3 27.4 3.5 40.5 5.8q44.8 8 88.7 19.4c47.6 12.3 95.6 25.3 143.2 35.3q30.1 6.4 61.3 10.5c39.6 5.2 80.3 6 118.9-.3q27-4.4 54.7-12.9 12.3-3.8 31.6-10.7 22.1-8 47-18.7 8-3.4 18.3-8.1l77.2-35.1q41.9-19.1 85.3-34.4 37.3-13.2 76.3-19.5c33-5.3 66.5-5.2 100.3-.2 31.8 4.8 63 13.3 93.6 23.3 38.3 12.5 78.4 28.1 117.4 42.6q51.1 19 95.2 31.3c43 12.1 88.8 19.6 134.2 20Z"/>
+      </svg>
 
-    <section id="testimonials" aria-label="What our customers are saying" class="bg-slate-50 py-20 sm:py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl md:text-center">
-          <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">Loved by the people worldwide.</h2>
-          <p class="mt-4 text-lg tracking-tight text-muted-foreground">Epic Zeit is so simple that people can’t help but fall in love with it.</p>
-          <p class="text-lg tracking-tight text-muted-foreground">Simplicity is easy when you focus on what matters the most.</p>
+      <section id="testimonials" aria-label="What our customers are saying" class="bg-slate-50 py-20 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl md:text-center">
+            <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">Loved by the people worldwide.</h2>
+            <p class="mt-4 text-lg tracking-tight text-muted-foreground">Epic Zeit is so simple that people can’t help but fall in love with it.</p>
+            <p class="text-lg tracking-tight text-muted-foreground">Simplicity is easy when you focus on what matters the most.</p>
+          </div>
+          <ul role="list"
+              class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+            <li>
+              <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                <li>
+                  <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <blockquote class="relative">
+                      <p class="text-lg tracking-tight text-slate-900">TaxPal is so easy to use I can’t help but wonder if it’s really doing the things the government expects me to do.</p>
+                    </blockquote>
+                    <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <div>
+                        <div class="font-display text-base text-slate-900">Sheryl Berge</div>
+                        <div class="mt-1 text-sm text-slate-500">CEO at Lynch LLC</div>
+                      </div>
+                      <div class="overflow-hidden rounded-full bg-slate-50">
+                        <img alt=""
+                             loading="lazy"
+                             width="56"
+                             height="56"
+                             decoding="async"
+                             data-nimg="1"
+                             class="h-14 w-14 object-cover"
+                             style="color:transparent"
+                             srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-1.c78616b7.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-1.c78616b7.png&amp;w=128&amp;q=75 2x"
+                             src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-1.c78616b7.png&amp;w=128&amp;q=75">
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+
+                <li>
+                  <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <blockquote class="relative">
+                      <p class="text-lg tracking-tight text-slate-900">I’m trying to get a hold of someone in support, I’m in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.</p>
+                    </blockquote>
+                    <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <div>
+                        <div class="font-display text-base text-slate-900">Amy Hahn</div>
+                        <div class="mt-1 text-sm text-slate-500">Director at Velocity Industries</div>
+                      </div>
+                      <div class="overflow-hidden rounded-full bg-slate-50">
+                        <img alt=""
+                             loading="lazy"
+                             width="56"
+                             height="56"
+                             decoding="async"
+                             data-nimg="1"
+                             class="h-14 w-14 object-cover"
+                             style="color:transparent"
+                             srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75 2x"
+                             src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75">
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                <li>
+                  <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <blockquote class="relative">
+                      <p class="text-lg tracking-tight text-slate-900">The best part about TaxPal is every time I pay my employees, my bank balance doesn’t go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.</p>
+                    </blockquote>
+                    <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <div>
+                        <div class="font-display text-base text-slate-900">Leland Kiehn</div>
+                        <div class="mt-1 text-sm text-slate-500">Founder of Kiehn and Sons</div>
+                      </div>
+                      <div class="overflow-hidden rounded-full bg-slate-50">
+                        <img alt=""
+                             loading="lazy"
+                             width="56"
+                             height="56"
+                             decoding="async"
+                             data-nimg="1"
+                             class="h-14 w-14 object-cover"
+                             style="color:transparent"
+                             srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-5.e7f7faf2.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-5.e7f7faf2.png&amp;w=128&amp;q=75 2x"
+                             src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-5.e7f7faf2.png&amp;w=128&amp;q=75">
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+
+                <li>
+                  <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <blockquote class="relative">
+                      <p class="text-lg tracking-tight text-slate-900">There are so many things I had to do with my old software that I just don’t do at all with TaxPal. Suspicious but I can’t say I don’t love it.</p>
+                    </blockquote>
+                    <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <div>
+                        <div class="font-display text-base text-slate-900">Erin Powlowski</div>
+                        <div class="mt-1 text-sm text-slate-500">COO at Armstrong Inc</div>
+                      </div>
+                      <div class="overflow-hidden rounded-full bg-slate-50">
+                        <img alt=""
+                             loading="lazy"
+                             width="56"
+                             height="56"
+                             decoding="async"
+                             data-nimg="1"
+                             class="h-14 w-14 object-cover"
+                             style="color:transparent"
+                             srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-2.c72e5a40.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-2.c72e5a40.png&amp;w=128&amp;q=75 2x"
+                             src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-2.c72e5a40.png&amp;w=128&amp;q=75">
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                <li>
+                  <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <blockquote class="relative">
+                      <p class="text-lg tracking-tight text-slate-900">I used to have to remit tax to the EU and with TaxPal I somehow don’t have to do that anymore. Nervous to travel there now though.</p>
+                    </blockquote>
+                    <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <div>
+                        <div class="font-display text-base text-slate-900">Peter Renolds</div>
+                        <div class="mt-1 text-sm text-slate-500">Founder of West Inc</div>
+                      </div>
+                      <div class="overflow-hidden rounded-full bg-slate-50">
+                        <img alt=""
+                             loading="lazy"
+                             width="56"
+                             height="56"
+                             decoding="async"
+                             data-nimg="1"
+                             class="h-14 w-14 object-cover"
+                             style="color:transparent"
+                             srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-3.eaa9ef6f.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-3.eaa9ef6f.png&amp;w=128&amp;q=75 2x"
+                             src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-3.eaa9ef6f.png&amp;w=128&amp;q=75">
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+
+                <li>
+                  <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <blockquote class="relative">
+                      <p class="text-lg tracking-tight text-slate-900">This is the fourth email I’ve sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.</p>
+                    </blockquote>
+                    <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <div>
+                        <div class="font-display text-base text-slate-900">Amy Hahn</div>
+                        <div class="mt-1 text-sm text-slate-500">Director at Velocity Industries</div>
+                      </div>
+                      <div class="overflow-hidden rounded-full bg-slate-50">
+                        <img alt=""
+                             loading="lazy"
+                             width="56"
+                             height="56"
+                             decoding="async"
+                             data-nimg="1"
+                             class="h-14 w-14 object-cover"
+                             style="color:transparent"
+                             srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75 2x"
+                             src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75">
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        <ul role="list"
-            class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
-          <li>
-            <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
-              <li>
-                <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                  <blockquote class="relative">
-                    <p class="text-lg tracking-tight text-slate-900">TaxPal is so easy to use I can’t help but wonder if it’s really doing the things the government expects me to do.</p>
-                  </blockquote>
-                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                    <div>
-                      <div class="font-display text-base text-slate-900">Sheryl Berge</div>
-                      <div class="mt-1 text-sm text-slate-500">CEO at Lynch LLC</div>
-                    </div>
-                    <div class="overflow-hidden rounded-full bg-slate-50"><img alt=""
-                                                                               loading="lazy"
-                                                                               width="56"
-                                                                               height="56"
-                                                                               decoding="async"
-                                                                               data-nimg="1"
-                                                                               class="h-14 w-14 object-cover"
-                                                                               style="color:transparent"
-                                                                               srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-1.c78616b7.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-1.c78616b7.png&amp;w=128&amp;q=75 2x"
-                                                                               src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-1.c78616b7.png&amp;w=128&amp;q=75">
-                    </div>
-                  </figcaption>
-                </figure>
-              </li>
-              <li>
-                <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                  <blockquote class="relative">
-                    <p class="text-lg tracking-tight text-slate-900">I’m trying to get a hold of someone in support, I’m in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.</p>
-                  </blockquote>
-                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                    <div>
-                      <div class="font-display text-base text-slate-900">Amy Hahn</div>
-                      <div class="mt-1 text-sm text-slate-500">Director at Velocity Industries</div>
-                    </div>
-                    <div class="overflow-hidden rounded-full bg-slate-50"><img alt=""
-                                                                               loading="lazy"
-                                                                               width="56"
-                                                                               height="56"
-                                                                               decoding="async"
-                                                                               data-nimg="1"
-                                                                               class="h-14 w-14 object-cover"
-                                                                               style="color:transparent"
-                                                                               srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75 2x"
-                                                                               src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75">
-                    </div>
-                  </figcaption>
-                </figure>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
-              <li>
-                <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                  <blockquote class="relative">
-                    <p class="text-lg tracking-tight text-slate-900">The best part about TaxPal is every time I pay my employees, my bank balance doesn’t go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.</p>
-                  </blockquote>
-                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                    <div>
-                      <div class="font-display text-base text-slate-900">Leland Kiehn</div>
-                      <div class="mt-1 text-sm text-slate-500">Founder of Kiehn and Sons</div>
-                    </div>
-                    <div class="overflow-hidden rounded-full bg-slate-50"><img alt=""
-                                                                               loading="lazy"
-                                                                               width="56"
-                                                                               height="56"
-                                                                               decoding="async"
-                                                                               data-nimg="1"
-                                                                               class="h-14 w-14 object-cover"
-                                                                               style="color:transparent"
-                                                                               srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-5.e7f7faf2.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-5.e7f7faf2.png&amp;w=128&amp;q=75 2x"
-                                                                               src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-5.e7f7faf2.png&amp;w=128&amp;q=75">
-                    </div>
-                  </figcaption>
-                </figure>
-              </li>
-              <li>
-                <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                  <blockquote class="relative">
-                    <p class="text-lg tracking-tight text-slate-900">There are so many things I had to do with my old software that I just don’t do at all with TaxPal. Suspicious but I can’t say I don’t love it.</p>
-                  </blockquote>
-                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                    <div>
-                      <div class="font-display text-base text-slate-900">Erin Powlowski</div>
-                      <div class="mt-1 text-sm text-slate-500">COO at Armstrong Inc</div>
-                    </div>
-                    <div class="overflow-hidden rounded-full bg-slate-50"><img alt=""
-                                                                               loading="lazy"
-                                                                               width="56"
-                                                                               height="56"
-                                                                               decoding="async"
-                                                                               data-nimg="1"
-                                                                               class="h-14 w-14 object-cover"
-                                                                               style="color:transparent"
-                                                                               srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-2.c72e5a40.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-2.c72e5a40.png&amp;w=128&amp;q=75 2x"
-                                                                               src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-2.c72e5a40.png&amp;w=128&amp;q=75">
-                    </div>
-                  </figcaption>
-                </figure>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
-              <li>
-                <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                  <blockquote class="relative">
-                    <p class="text-lg tracking-tight text-slate-900">I used to have to remit tax to the EU and with TaxPal I somehow don’t have to do that anymore. Nervous to travel there now though.</p>
-                  </blockquote>
-                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                    <div>
-                      <div class="font-display text-base text-slate-900">Peter Renolds</div>
-                      <div class="mt-1 text-sm text-slate-500">Founder of West Inc</div>
-                    </div>
-                    <div class="overflow-hidden rounded-full bg-slate-50"><img alt=""
-                                                                               loading="lazy"
-                                                                               width="56"
-                                                                               height="56"
-                                                                               decoding="async"
-                                                                               data-nimg="1"
-                                                                               class="h-14 w-14 object-cover"
-                                                                               style="color:transparent"
-                                                                               srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-3.eaa9ef6f.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-3.eaa9ef6f.png&amp;w=128&amp;q=75 2x"
-                                                                               src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-3.eaa9ef6f.png&amp;w=128&amp;q=75">
-                    </div>
-                  </figcaption>
-                </figure>
-              </li>
-              <li>
-                <figure class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                  <blockquote class="relative">
-                    <p class="text-lg tracking-tight text-slate-900">This is the fourth email I’ve sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.</p>
-                  </blockquote>
-                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                    <div>
-                      <div class="font-display text-base text-slate-900">Amy Hahn</div>
-                      <div class="mt-1 text-sm text-slate-500">Director at Velocity Industries</div>
-                    </div>
-                    <div class="overflow-hidden rounded-full bg-slate-50"><img alt=""
-                                                                               loading="lazy"
-                                                                               width="56"
-                                                                               height="56"
-                                                                               decoding="async"
-                                                                               data-nimg="1"
-                                                                               class="h-14 w-14 object-cover"
-                                                                               style="color:transparent"
-                                                                               srcset="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=64&amp;q=75 1x, https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75 2x"
-                                                                               src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar-4.16b4e29e.png&amp;w=128&amp;q=75">
-                    </div>
-                  </figcaption>
-                </figure>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </section>
+      </section>
 
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 225"
+           class="relative top-[-1px] stroke-[#f8fafc] fill-[#f8fafc]" style="scale: 1 -1">
+        <path d="M1920 167.6V225H0v-20.9q50.7 0 100.9-7.8c41.2-6.4 81.8-16.2 122-27.7l82-23.4q28.2-8 57.9-14.7 26.1-5.9 55.2-10 59-8.3 118.3-1.3c11.4 1.3 27.4 3.5 40.5 5.8q44.8 8 88.7 19.4c47.6 12.3 95.6 25.3 143.2 35.3q30.1 6.4 61.3 10.5c39.6 5.2 80.3 6 118.9-.3q27-4.4 54.7-12.9 12.3-3.8 31.6-10.7 22.1-8 47-18.7 8-3.4 18.3-8.1l77.2-35.1q41.9-19.1 85.3-34.4 37.3-13.2 76.3-19.5c33-5.3 66.5-5.2 100.3-.2 31.8 4.8 63 13.3 93.6 23.3 38.3 12.5 78.4 28.1 117.4 42.6q51.1 19 95.2 31.3c43 12.1 88.8 19.6 134.2 20Z"/>
+      </svg>
 
-    <section id="get-started-today" class="relative overflow-hidden py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-        <div class="mx-auto max-w-xl text-center">
-          <h2 class="font-display text-3xl tracking-tight sm:text-4xl">Beautiful time zones are waiting for you</h2>
-          <a href="/app/"
-             class="group inline-flex items-center h-11 px-8 py-4 mt-10 rounded-lg text-white bg-blue-600 !bg-[oklch(60%_0.24_255)]">Explore now</a>
+      <section id="get-started-today" class="relative overflow-hidden py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+          <div class="mx-auto max-w-xl text-center">
+            <h2 class="font-display text-3xl tracking-tight sm:text-4xl">Beautiful time zones are waiting for you</h2>
+            <a href="/app/" class="group inline-flex items-center h-11 px-8 py-4 mt-10 rounded-lg text-white bg-[#008fff] bg-[oklch(60%_0.24_255)]">Explore now</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     </main>
 
     <footer>
       <div class="max-w-screen-xl m-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div class="border-t pt-8">
+        <div class="border-t border-neutral-500 pt-8">
           <div class="sm:flex sm:justify-between">
-            <p class="text-sm text-muted-foreground">Copyright ©
+            <p class="text-sm text-white">Copyright ©
               <script>document.write(new Date().getFullYear())</script>
               Epic Zeit developed by <a href="https://twitter.com/vitasdev" rel="noreferrer" target="_blank" class="hover:underline hover:opacity-75">Filip Vitas</a>. Released under the <a href="https://opensource.org/license/gpl-3-0/">GPL-3.0 License</a>
             </p>
 
-            <ul class="mt-8 flex flex-wrap justify-start gap-4 text-sm sm:mt-0 lg:justify-end text-muted-foreground">
+            <ul class="mt-8 flex flex-wrap justify-start gap-4 text-sm sm:mt-0 lg:justify-end text-white">
               <li>
-                <a href="#" class="transition hover:underline hover:opacity-75"> Terms & Conditions </a>
+                <a href="#" class="transition hover:underline hover:opacity-75">Terms & Conditions</a>
               </li>
 
               <li>
-                <a href="#" class="transition hover:underline hover:opacity-75"> Privacy Policy </a>
+                <a href="#" class="transition hover:underline hover:opacity-75">Privacy Policy</a>
               </li>
 
               <li>
-                <a href="#" class="transition hover:underline hover:opacity-75"> Cookies </a>
+                <a href="#" class="transition hover:underline hover:opacity-75">Cookies</a>
               </li>
             </ul>
           </div>
