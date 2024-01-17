@@ -75,7 +75,7 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
           </div>
 
           <DialogFooter>
-            <Button size="sm" variant="outline" onClick={() => onOpenChange(false)}>
+            <Button size="sm" variant="outline" type="reset" onClick={() => onOpenChange(false)}>
               Cancel
             </Button>
 
