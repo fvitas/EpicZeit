@@ -1,3 +1,4 @@
+import { AboutDialog } from '@/components/dialogs/AboutDialog.jsx'
 import { AddLocationDialog } from '@/components/dialogs/AddLocationDialog.jsx'
 import { CustomPalettePickerDialog } from '@/components/dialogs/CustomPalettePickerDialog.jsx'
 import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
@@ -20,6 +21,7 @@ export function ActionDropdown() {
   const [showCustomPalettePicker, setShowCustomPalettePicker] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [showShare, setShowShare] = useState(false)
+  const [showAbout, setShowAbout] = useState(false)
 
   return (
     <>
@@ -51,6 +53,10 @@ export function ActionDropdown() {
             <DropdownMenuItem onClick={() => setShowShare(true)}>
               <span>Share</span>
             </DropdownMenuItem>
+
+            <DropdownMenuItem onClick={() => setShowAbout(true)}>
+              <span>About</span>
+            </DropdownMenuItem>
           </DropdownMenuGroup>
 
           {import.meta.env.VITE_APP_ENV === 'extension' ? (
@@ -81,6 +87,8 @@ export function ActionDropdown() {
       <CustomPalettePickerDialog isOpen={showCustomPalettePicker} onOpenChange={setShowCustomPalettePicker} />
 
       <ShareDialog isOpen={showShare} onOpenChange={setShowShare} />
+
+      <AboutDialog isOpen={showAbout} onOpenChange={setShowAbout} />
     </>
   )
 }
