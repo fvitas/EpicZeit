@@ -8,7 +8,8 @@ export function AboutDialog({ isOpen, onOpenChange }) {
         <div className="text-center">
           <h3 className="text-center text-2xl font-semibold">Epic Zeit</h3>
 
-          <p className="text-center text-sm text-gray-600">Free. Open-source. Forever.</p>
+          <p className="text-center text-sm text-gray-600">Free. Open-source.</p>
+          <p className="text-center text-sm text-gray-600">No ads. No Server.</p>
 
           <div className="mt-4 space-y-2">
             <div className="flex justify-between">
@@ -17,12 +18,26 @@ export function AboutDialog({ isOpen, onOpenChange }) {
             </div>
             <div className="flex justify-between">
               <span className="text-gray-700">Developed by</span>
-              <span className="text-gray-900">Filip Vitas</span>
+              <a
+                href="https://twitter.com/vitasdev"
+                rel="noreferrer"
+                target="_blank"
+                className="text-gray-900 transition hover:opacity-75">
+                Filip Vitas
+              </a>
             </div>
+
             <div className="flex justify-between">
               <span className="text-gray-700">License</span>
-              <span className="text-gray-900">GPL3 License</span>
+              <a
+                href="https://www.gnu.org/licenses/gpl-3.0.html"
+                rel="noreferrer"
+                target="_blank"
+                className="text-gray-900 transition hover:opacity-75">
+                GPL-3.0 License
+              </a>
             </div>
+
             <div className="flex justify-between">
               <span className="text-gray-700">Source code</span>
               <span className="text-gray-900">
@@ -47,7 +62,7 @@ export function AboutDialog({ isOpen, onOpenChange }) {
           <p className="mt-4 text-start"></p>
 
           <div className="bg-gray-100 px-6 py-3 text-center text-sm">
-            <p>Copyright © 2024 Filip Vitas. All rights reserved.</p>
+            <p>© 2024 Filip Vitas</p>
           </div>
 
           <Button className="mt-4 w-full text-center" variant="default" onClick={() => onOpenChange(false)}>
