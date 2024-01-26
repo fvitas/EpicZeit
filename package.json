@@ -1,6 +1,5 @@
 {
   "name": "epiczeit",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "keywords": [
@@ -15,8 +14,7 @@
   "scripts": {
     "dev": "vite",
     "watch": "vite build -w",
-    "build:web": "vite build --mode web",
-    "build:extension": "vite build --mode extension && cp src/manifest.json dist/",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
