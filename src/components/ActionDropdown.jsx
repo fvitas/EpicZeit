@@ -1,8 +1,8 @@
 import { AboutDialog } from '@/components/dialogs/AboutDialog.jsx'
-import { AddLocationDialog } from '@/components/dialogs/AddLocationDialog.jsx'
 import { CustomPalettePickerDialog } from '@/components/dialogs/CustomPalettePickerDialog.jsx'
 import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
 import { SettingsDialog } from '@/components/dialogs/SettingsDialog.jsx'
+import { AddLocationDialog } from '@/components/dialogs/location/AddLocationDialog.jsx'
 import { ShareDialog } from '@/components/share/ShareDialog.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import {

@@ -1,32 +1,26 @@
-import { AddLocation } from '@/components/AddLocation.jsx'
 import { Timezone } from '@/components/Timezone.jsx'
+import { AddLocationDialog } from '@/components/dialogs/location/AddLocationDialog.jsx'
 import { Button } from '@/components/ui/button.jsx'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog.jsx'
 import { actions, useEpicZeitState } from '@/state/state.js'
+import { useState } from 'react'
 import { When } from 'react-if'
-import earth from '../assets/earth.svg'
 
 export function Timezones() {
+  const [showAddLocation, setShowAddLocation] = useState(false)
   const { currentTime, showResetTime, timezones } = useEpicZeitState()
 
   return (
     <div className="w-full h-full flex">
       <When condition={timezones.length === 0}>
         <div className="flex flex-auto flex-col justify-center items-center -mt-24">
-          <img src={earth} className="h-80" alt="empty state earth" />
+          <img src="/earth.svg" className="h-80" alt="empty state earth" />
 
           <p className="mt-2 text-2xl">No location added yet</p>
           <p className="mt-2 text-lg">Beautiful timezones are waiting for you</p>
 
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="mt-5 text-base font-normal">Add first location</Button>
-            </DialogTrigger>
-
-            <DialogContent className="overflow-hidden p-0 shadow-lg">
-              <AddLocation />
-            </DialogContent>
-          </Dialog>
+          <Button className="mt-5 text-base font-normal" onClick={() => setShowAddLocation(true)}>
+            Add first location
+          </Button>
         </div>
       </When>
 
@@ -41,6 +35,8 @@ export function Timezones() {
       {timezones.map(timezone => (
         <Timezone key={timezone.offset} currentTime={currentTime} timezone={timezone} />
       ))}
+
+      <AddLocationDialog isOpen={showAddLocation} onOpenChange={setShowAddLocation} />
     </div>
   )
 }

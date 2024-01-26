@@ -25,6 +25,7 @@ export function AddLocation(props) {
   function selectLocation(locationId) {
     const newLocation = data?.results?.find(item => String(item.id) === String(locationId))
     actions.addLocation(newLocation)
+    setLocationInputValue('')
     props?.onSelect?.()
   }
 
