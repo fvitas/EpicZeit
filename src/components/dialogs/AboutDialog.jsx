@@ -9,12 +9,11 @@ export function AboutDialog({ isOpen, onOpenChange }) {
           <h3 className="text-center text-2xl font-semibold">Epic Zeit</h3>
 
           <p className="text-center text-sm text-gray-600">Free. Open-source.</p>
-          <p className="text-center text-sm text-gray-600">No ads. No Server.</p>
 
           <div className="mt-4 space-y-2">
             <div className="flex justify-between">
               <span className="text-gray-700">Version</span>
-              <span className="text-gray-900">1.2.3</span>
+              <span className="text-gray-900">{import.meta.env.APP_VERSION}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-700">Developed by</span>
@@ -34,7 +33,7 @@ export function AboutDialog({ isOpen, onOpenChange }) {
                 rel="noreferrer"
                 target="_blank"
                 className="text-gray-900 transition hover:opacity-75">
-                GPL-3.0 License
+                GPL v3 License
               </a>
             </div>
 
