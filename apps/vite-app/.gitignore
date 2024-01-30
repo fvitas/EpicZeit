@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+dist
 dist-ssr
 *.local
 
@@ -23,25 +24,3 @@ dist-ssr
 *.sw?
 
 stats.html
-
-# Dependencies
-.pnp
-.pnp.js
-
-# Testing
-coverage
-
-# Turbo
-.turbo
-
-# Vercel
-.vercel
-
-# Build Outputs
-.next/
-out/
-build
-dist
-
-# Misc
-*.pem
