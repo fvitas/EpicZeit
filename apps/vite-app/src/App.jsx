@@ -1,5 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './globals.css'
+
+// TODO (filipv): error here ????
 import '/node_modules/flag-icons/css/flag-icons.min.css'
 
 import { ActionDropdown } from '@/components/ActionDropdown.jsx'

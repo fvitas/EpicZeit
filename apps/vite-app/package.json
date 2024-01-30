@@ -1,5 +1,5 @@
 {
-  "name": "epiczeit",
+  "name": "@epiczeit/app",
   "version": "0.0.0",
   "type": "module",
   "keywords": [
@@ -15,10 +15,10 @@
     "dev": "vite",
     "watch": "vite build -w",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@repo/ui": "*",
     "@mantine/hooks": "7.5.0",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-dropdown-menu": "2.0.6",
@@ -52,15 +52,7 @@
     "@types/react-dom": "18.2.18",
     "@vitejs/plugin-react-swc": "3.5.0",
     "autoprefixer": "10.4.16",
-    "eslint": "8.56.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-config-react-app": "7.0.1",
-    "eslint-plugin-prettier": "5.0.1",
-    "eslint-plugin-react": "7.33.2",
-    "eslint-plugin-react-hooks": "4.6.0",
     "postcss": "8.4.32",
-    "prettier": "3.1.1",
-    "prettier-plugin-organize-imports": "3.2.4",
     "rollup-plugin-visualizer": "5.12.0",
     "tailwindcss": "3.4.1",
     "tailwindcss-animate": "1.0.7",
