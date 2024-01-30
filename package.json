@@ -18,6 +18,7 @@
     "lint": "turbo lint",
     "format": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
