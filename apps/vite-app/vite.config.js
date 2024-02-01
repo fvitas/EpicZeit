@@ -20,10 +20,11 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: false,
     rollupOptions: {
+      external: ['/node_modules/flag-icons/css/flag-icons.min.css'],
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        app: path.resolve(__dirname, 'app.html'),
-        privacy: path.resolve(__dirname, 'privacy.html'),
+        main: path.resolve('./index.html'),
+        app: path.resolve('./app.html'),
+        privacy: path.resolve('./privacy.html'),
       },
       output: {
         manualChunks: {
