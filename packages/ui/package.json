@@ -2,10 +2,10 @@
   "name": "@repo/ui",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "./src/index.js",
   "exports": {
-    "./button": "./src/button.jsx",
-    "./card": "./src/card.jsx",
-    "./code": "./src/code.jsx"
+    "import": "./src/index.js"
   },
   "scripts": {
   },
