@@ -20,7 +20,6 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: false,
     rollupOptions: {
-      external: ['/node_modules/flag-icons/css/flag-icons.min.css'],
       input: {
         main: path.resolve('./index.html'),
         app: path.resolve('./app.html'),
