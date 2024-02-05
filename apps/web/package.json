@@ -18,7 +18,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
     "@repo/app": "workspace:*",
     "@mantine/hooks": "7.5.0",
     "@radix-ui/react-dialog": "1.0.5",
