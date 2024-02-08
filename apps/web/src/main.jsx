@@ -1,4 +1,4 @@
-import { App } from '@repo/app'
+import { App } from '@repo/ui'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
