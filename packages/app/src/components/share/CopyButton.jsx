@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button.jsx'
-import { cn } from '@/utils.js'
+import { Button } from '@ui/components/ui/button.jsx'
+import { cn } from '@ui/utils'
 import copyToClipboard from 'clipboard-copy'
 import { useState } from 'react'
 import { Case, Switch } from 'react-if'

@@ -1,4 +1,4 @@
-import { defaultPalettes } from '@/components/palette/colors.js'
+import { defaultPalettes } from '@ui/components/palette/colors.js'
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone.js'
 import utc from 'dayjs/plugin/utc.js'

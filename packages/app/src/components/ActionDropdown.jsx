@@ -1,10 +1,10 @@
-import { AboutDialog } from '@/components/dialogs/AboutDialog.jsx'
-import { CustomPalettePickerDialog } from '@/components/dialogs/CustomPalettePickerDialog.jsx'
-import { PalettePickerDialog } from '@/components/dialogs/PalettePickerDialog.jsx'
-import { SettingsDialog } from '@/components/dialogs/SettingsDialog.jsx'
-import { AddLocationDialog } from '@/components/dialogs/location/AddLocationDialog.jsx'
-import { ShareDialog } from '@/components/share/ShareDialog.jsx'
-import { Button } from '@/components/ui/button.jsx'
+import { AboutDialog } from '@ui/components/dialogs/AboutDialog.jsx'
+import { CustomPalettePickerDialog } from '@ui/components/dialogs/CustomPalettePickerDialog.jsx'
+import { PalettePickerDialog } from '@ui/components/dialogs/PalettePickerDialog.jsx'
+import { SettingsDialog } from '@ui/components/dialogs/SettingsDialog.jsx'
+import { AddLocationDialog } from '@ui/components/dialogs/location/AddLocationDialog.jsx'
+import { ShareDialog } from '@ui/components/share/ShareDialog.jsx'
+import { Button } from '@ui/components/ui/button.jsx'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@ui/components/ui/dropdown-menu'
 import { useState } from 'react'
 
 export function ActionDropdown() {

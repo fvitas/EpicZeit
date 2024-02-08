@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button.jsx'
+import { Button } from '@ui/components/ui/button.jsx'
 import {
   Dialog,
   DialogContent,
@@ -6,9 +6,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog.jsx'
-import { Input } from '@/components/ui/input.jsx'
-import { actions } from '@/state/state.js'
+} from '@ui/components/ui/dialog.jsx'
+import { Input } from '@ui/components/ui/input.jsx'
+import { actions } from '@ui/state/state.js'
 import { useState } from 'react'
 
 export function LocationLabelWithDialog({ location }) {

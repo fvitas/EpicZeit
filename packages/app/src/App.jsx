@@ -3,8 +3,8 @@ import './globals.css'
 
 import 'flag-icons/css/flag-icons.min.css'
 
-import { ActionDropdown } from '@/components/ActionDropdown.jsx'
-import { Timezones } from '@/components/Timezones.jsx'
+import { ActionDropdown } from '@ui/components/ActionDropdown.jsx'
+import { Timezones } from '@ui/components/Timezones.jsx'
 
 const queryClient = new QueryClient({
   defaultOptions: {

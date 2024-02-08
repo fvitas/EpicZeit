@@ -1,6 +1,7 @@
-import { defaultPalettes } from '@/components/palette/colors.js'
-import staticPalettes from '@/components/palette/static-palettes.json'
-import { Button } from '@/components/ui/button.jsx'
+import { Tabs } from '@radix-ui/react-tabs'
+import { defaultPalettes } from '@ui/components/palette/colors.js'
+import staticPalettes from '@ui/components/palette/static-palettes.json'
+import { Button } from '@ui/components/ui/button.jsx'
 import {
   Dialog,
   DialogContent,
@@ -8,14 +9,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog.jsx'
-import { Label } from '@/components/ui/label.jsx'
-import { ScrollArea } from '@/components/ui/scroll-area.jsx'
-import { Switch } from '@/components/ui/switch.jsx'
-import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.jsx'
-import { actions, useEpicZeitState } from '@/state/state.js'
-import { cn } from '@/utils.js'
-import { Tabs } from '@radix-ui/react-tabs'
+} from '@ui/components/ui/dialog.jsx'
+import { Label } from '@ui/components/ui/label.jsx'
+import { ScrollArea } from '@ui/components/ui/scroll-area.jsx'
+import { Switch } from '@ui/components/ui/switch.jsx'
+import { TabsContent, TabsList, TabsTrigger } from '@ui/components/ui/tabs.jsx'
+import { actions, useEpicZeitState } from '@ui/state/state.js'
+import { cn } from '@ui/utils.js'
 import chroma from 'chroma-js'
 import { useState } from 'react'
 import { When } from 'react-if'

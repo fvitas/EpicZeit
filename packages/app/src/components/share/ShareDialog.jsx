@@ -1,8 +1,8 @@
-import { CopyButton } from '@/components/share/CopyButton.jsx'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog.jsx'
-import { Input } from '@/components/ui/input.jsx'
-import { Label } from '@/components/ui/label.jsx'
-import { useEpicZeitState } from '@/state/state.js'
+import { CopyButton } from '@ui/components/share/CopyButton.jsx'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@ui/components/ui/dialog.jsx'
+import { Input } from '@ui/components/ui/input.jsx'
+import { Label } from '@ui/components/ui/label.jsx'
+import { useEpicZeitState } from '@ui/state/state.js'
 import { compressToEncodedURIComponent } from 'lz-string'
 import { When } from 'react-if'
 

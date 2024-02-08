@@ -1,7 +1,7 @@
-import { Timezone } from '@/components/Timezone.jsx'
-import { AddLocationDialog } from '@/components/dialogs/location/AddLocationDialog.jsx'
-import { Button } from '@/components/ui/button.jsx'
-import { actions, useEpicZeitState } from '@/state/state.js'
+import { Timezone } from '@ui/components/Timezone.jsx'
+import { AddLocationDialog } from '@ui/components/dialogs/location/AddLocationDialog.jsx'
+import { Button } from '@ui/components/ui/button.jsx'
+import { actions, useEpicZeitState } from '@ui/state/state.js'
 import { useState } from 'react'
 import { When } from 'react-if'
 

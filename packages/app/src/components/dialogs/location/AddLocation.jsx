@@ -1,8 +1,8 @@
-import { Command, CommandEmpty, CommandInput, CommandItem, CommandList } from '@/components/ui/command.jsx'
-import { actions } from '@/state/state.js'
-import { cn } from '@/utils.js'
 import { useDebouncedValue } from '@mantine/hooks'
 import { useQuery } from '@tanstack/react-query'
+import { Command, CommandEmpty, CommandInput, CommandItem, CommandList } from '@ui/components/ui/command.jsx'
+import { actions } from '@ui/state/state.js'
+import { cn } from '@ui/utils.js'
 import { useState } from 'react'
 import { When } from 'react-if'
 

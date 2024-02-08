@@ -1,9 +1,9 @@
 import { Command as CommandPrimitive } from 'cmdk'
 import * as React from 'react'
 
-import { Dialog, DialogContent } from '@/components/ui/dialog'
-import { cn } from '@/utils'
 import { IconSearch } from '@tabler/icons-react'
+import { Dialog, DialogContent } from '@ui/components/ui/dialog'
+import { cn } from '@ui/utils'
 
 const Command = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive

@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button.jsx'
-import { Dialog, DialogContent } from '@/components/ui/dialog.jsx'
 import { IconExternalLink } from '@tabler/icons-react'
+import { Button } from '@ui/components/ui/button.jsx'
+import { Dialog, DialogContent } from '@ui/components/ui/dialog.jsx'
 
 export function AboutDialog({ isOpen, onOpenChange }) {
   return (

@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from '@/components/ui/dialog.jsx'
+import { Dialog, DialogContent } from '@ui/components/ui/dialog.jsx'
 import { AddLocation } from './AddLocation.jsx'
 
 export function AddLocationDialog({ isOpen, onOpenChange }) {

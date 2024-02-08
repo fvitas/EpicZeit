@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button.jsx'
+import { Button } from '@ui/components/ui/button.jsx'
 import {
   Dialog,
   DialogContent,
@@ -6,10 +6,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog.jsx'
-import { Label } from '@/components/ui/label.jsx'
-import { Switch } from '@/components/ui/switch.jsx'
-import { settingsActions, useTimezoneSettings } from '@/state/settings.js'
+} from '@ui/components/ui/dialog.jsx'
+import { Label } from '@ui/components/ui/label.jsx'
+import { Switch } from '@ui/components/ui/switch.jsx'
+import { settingsActions, useTimezoneSettings } from '@ui/state/settings.js'
 
 export function SettingsDialog({ isOpen, onOpenChange }) {
   const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()

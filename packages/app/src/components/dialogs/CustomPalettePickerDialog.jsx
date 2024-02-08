@@ -1,5 +1,5 @@
-import { CustomPalettePicker } from '@/components/palette/CustomPalettePicker.jsx'
-import { Button } from '@/components/ui/button.jsx'
+import { CustomPalettePicker } from '@ui/components/palette/CustomPalettePicker.jsx'
+import { Button } from '@ui/components/ui/button.jsx'
 import {
   Dialog,
   DialogContent,
@@ -7,8 +7,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog.jsx'
-import { actions } from '@/state/state.js'
+} from '@ui/components/ui/dialog.jsx'
+import { actions } from '@ui/state/state.js'
 
 export function CustomPalettePickerDialog({ isOpen, onOpenChange }) {
   function discardSelectedPalette() {
