@@ -59,7 +59,7 @@ export function ActionDropdown() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
 
-          {import.meta.env.VITE_APP_ENV === 'extension' ? (
+          {import.meta.env.VITE_FEATURE_OPEN_NEW_TAB ? (
             <>
               <DropdownMenuSeparator />
 
