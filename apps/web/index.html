@@ -13,12 +13,12 @@
     <meta property="og:url" content="https://epiczeit.com"/>
     <meta property="og:title" content="Epic Zeit - Beautiful time zones"/>
     <meta property="og:description" content="Epic way to sync timezones among colleagues, friends, and family across the globe."/>
-    <meta property="og:image" content="/home/assets/localhost_1.png">
+    <meta property="og:image" content="./home/assets/new/png/demo_1.png">
 
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="Epic Zeit - Beautiful time zones">
     <meta property="twitter:description" content="Epic way to sync timezones among colleagues, friends, and family across the globe.">
-    <meta property="twitter:image" content="/home/assets/localhost_1.png">
+    <meta property="twitter:image" content="./home/assets/new/png/demo_1.png">
 
     <link rel="manifest" href="/manifest.json">
 
@@ -33,7 +33,11 @@
     <meta name="theme-color" content="#446abe">
 
     <link rel="stylesheet" href="./home/style.css" type="text/css"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual'
+      }
+    </script>
 
     <style>
       body {
@@ -76,7 +80,7 @@
               </li>
 
               <li class="w-8 hidden sm:flex">
-                <a href="https://twitter.com/vitasdev" rel="noreferrer" target="_blank" class="transition hover:opacity-75">
+                <a href="https://twitter.com/epiczeit" rel="noreferrer" target="_blank" class="transition hover:opacity-75">
                   <span class="sr-only">visit X (ex Twitter)</span>
                   <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.52373 6.77566L15.4811 0H14.0699L8.89493 5.88201L4.7648 0H0L6.24693 8.89549L0 15.9999H1.4112L6.87253 9.78701L11.2352 15.9999H16M1.92053 1.04126H4.08853L14.0688 15.0098H11.9003"></path>
@@ -103,7 +107,7 @@
               <span>just beautiful time zones</span>
             </h1>
 
-            <p class="text-lg text-white">
+            <p class="my-4 text-lg text-white">
               Epic Zeit is a beautiful free open-source web app and extension that simplifies tracking time zones among colleagues, friends, and family worldwide.
             </p>
 
@@ -112,25 +116,33 @@
             <div class="flex items-center gap-4 text-white">
               <p>Available extensions for:</p>
               <a target="_blank" href="https://chrome.google.com/webstore/detail/..." class="">
-                <img class="w-6 h-6" alt="Chrome extension logo" src="/home/assets/chrome.svg"/>
+                <img class="w-6 h-6" alt="Chrome extension logo" src="./home/assets/chrome.svg"/>
               </a>
 
               <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/..." class="pointer-events-none grayscale">
-                <img class="w-6 h-6" alt="Firefox extension logo" src="/home/assets/firefox.svg"/>
+                <img class="w-6 h-6" alt="Firefox extension logo" src="./home/assets/firefox.svg"/>
               </a>
 
               <a target="_blank" href="https://microsoftedge.microsoft.com/addons/detail/..." class="pointer-events-none grayscale">
-                <img class="w-6 h-6" alt="Edge extension logo" src="/home/assets/edgechromium.svg"/>
+                <img class="w-6 h-6" alt="Edge extension logo" src="./home/assets/edgechromium.svg"/>
               </a>
 
               <a target="_blank" href="https://addons.opera.com/en/extensions/details/..." class="pointer-events-none grayscale">
-                <img class="w-6 h-6" alt="Opera extension logo" src="/home/assets/opera.svg"/>
+                <img class="w-6 h-6" alt="Opera extension logo" src="./home/assets/opera.svg"/>
               </a>
             </div>
           </div>
 
           <div class="mx-0 mt-10 md:mt-0 lg:mx-10 xl:mr-20">
-            <img class="w-80" alt="iPhone-14" src="/home/assets/chrome-ios.png" fetchpriority="high" loading="eager"/>
+            <picture>
+              <source type="image/avif" srcset="./home/assets/new/avif/chrome-ios.avif" />
+              <img src="./home/assets/new/png/chrome-ios.png"
+                   class="w-80"
+                   alt="iPhone-14"
+                   loading="eager"
+                   fetchpriority="high"
+              />
+            </picture>
           </div>
         </div>
       </section>
@@ -197,7 +209,17 @@
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
-                  <img class="max-w-full h-auto rounded-b-lg" alt="iPhone-14" src="/home/assets/localhost_1.png" loading="lazy" decoding="async" fetchpriority="low"/>
+                  <picture>
+                    <source type="image/avif" srcset="./home/assets/new/avif/demo_1.avif" />
+                    <source type="image/webp" srcset="./home/assets/new/webp/demo_1.webp" />
+                    <img src="./home/assets/new/png/demo_1.png"
+                         class="max-w-full h-auto rounded-b-lg"
+                         alt=""
+                         loading="lazy"
+                         decoding="async"
+                         fetchpriority="low"
+                    />
+                  </picture>
                 </div>
               </figure>
             </div>
@@ -254,7 +276,16 @@
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
-                  <img class="max-w-full h-auto rounded-b-lg" alt="iPhone-14" src="/home/assets/localhost_4.png" loading="lazy" decoding="async" fetchpriority="low"/>
+                  <picture>
+                    <source type="image/webp" srcset="./home/assets/new/webp/demo_3.webp" />
+                    <img src="./home/assets/new/png/demo_3.png"
+                         class="max-w-full h-auto rounded-b-lg"
+                         alt=""
+                         loading="lazy"
+                         decoding="async"
+                         fetchpriority="low"
+                    />
+                  </picture>
                 </div>
               </figure>
             </div>
@@ -311,7 +342,17 @@
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
-                  <img class="max-w-full h-auto rounded-b-lg" alt="iPhone-14" src="/home/assets/localhost_5.png" loading="lazy" decoding="async" fetchpriority="low"/>
+                  <picture>
+                    <source type="image/avif" srcset="./home/assets/new/avif/demo_4.avif" />
+                    <source type="image/webp" srcset="./home/assets/new/webp/demo_4.webp" />
+                    <img src="./home/assets/new/png/demo_4.png"
+                         class="max-w-full h-auto rounded-b-lg"
+                         alt=""
+                         loading="lazy"
+                         decoding="async"
+                         fetchpriority="low"
+                    />
+                  </picture>
                 </div>
               </figure>
             </div>
@@ -368,7 +409,17 @@
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
-                  <img class="max-w-full h-auto rounded-b-lg" alt="iPhone-14" src="/home/assets/localhost_9.png" loading="lazy" decoding="async" fetchpriority="low"/>
+                  <picture>
+                    <source type="image/avif" srcset="./home/assets/new/avif/demo_7.avif" />
+                    <source type="image/webp" srcset="./home/assets/new/webp/demo_7.webp" />
+                    <img src="./home/assets/new/png/demo_7.png"
+                         class="max-w-full h-auto rounded-b-lg"
+                         alt=""
+                         loading="lazy"
+                         decoding="async"
+                         fetchpriority="low"
+                    />
+                  </picture>
                 </div>
               </figure>
             </div>
@@ -425,7 +476,17 @@
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
-                  <img class="max-w-full h-auto rounded-b-lg" alt="iPhone-14" src="/home/assets/localhost_7.png" loading="lazy" decoding="async" fetchpriority="low"/>
+                  <picture>
+                    <source type="image/avif" srcset="./home/assets/new/avif/demo_5.avif" />
+                    <source type="image/webp" srcset="./home/assets/new/webp/demo_5.webp" />
+                    <img src="./home/assets/new/png/demo_5.png"
+                         class="max-w-full h-auto rounded-b-lg"
+                         alt=""
+                         loading="lazy"
+                         decoding="async"
+                         fetchpriority="low"
+                    />
+                  </picture>
                 </div>
               </figure>
             </div>
@@ -486,7 +547,17 @@
                 </div>
 
                 <div class="bg-gray-800 rounded-b-lg">
-                  <img class="max-w-full h-auto rounded-b-lg" alt="iPhone-14" src="/home/assets/localhost_8.png" loading="lazy" decoding="async" fetchpriority="low"/>
+                  <picture>
+                    <source type="image/avif" srcset="./home/assets/new/avif/demo_6.avif" />
+                    <source type="image/webp" srcset="./home/assets/new/webp/demo_6.webp" />
+                    <img src="./home/assets/new/png/demo_6.png"
+                         class="max-w-full h-auto rounded-b-lg"
+                         alt=""
+                         loading="lazy"
+                         decoding="async"
+                         fetchpriority="low"
+                    />
+                  </picture>
                 </div>
               </figure>
             </div>
