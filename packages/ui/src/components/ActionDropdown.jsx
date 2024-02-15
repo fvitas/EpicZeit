@@ -63,15 +63,8 @@ export function ActionDropdown() {
             <>
               <DropdownMenuSeparator />
 
-              <DropdownMenuItem onClick={() => window?.chrome?.tabs?.update({ url: 'chrome://new-tab-page' })}>
+              <DropdownMenuItem onClick={() => window?.chrome?.tabs?.create({ url: 'chrome://new-tab-page' })}>
                 <span>Open default new page</span>
-              </DropdownMenuItem>
-
-              <DropdownMenuSeparator />
-
-              <DropdownMenuItem
-                onClick={() => window?.chrome?.management?.setEnabled(window?.chrome?.runtime?.id, false)}>
-                <span>Disable extension</span>
               </DropdownMenuItem>
             </>
           ) : null}
