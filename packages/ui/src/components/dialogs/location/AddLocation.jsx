@@ -41,7 +41,7 @@ export function AddLocation(props) {
             <CommandItem key={item.id} value={String(item.id)} onSelect={selectLocation}>
               <span
                 className={cn(
-                  `fi fi-${item?.country_code?.toLowerCase()}`,
+                  `fi fi-xx fi-${item?.country_code?.toLowerCase()}`,
                   'h-5 !w-auto aspect-[4/3] mr-2 rounded-sm shadow',
                 )}></span>
 

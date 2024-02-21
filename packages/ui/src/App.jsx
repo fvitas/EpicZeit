@@ -1,8 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './globals.css'
 
-import 'flag-icons/css/flag-icons.min.css'
-
 import { ActionDropdown } from '@ui/components/ActionDropdown.jsx'
 import { Timezones } from '@ui/components/Timezones.jsx'
 

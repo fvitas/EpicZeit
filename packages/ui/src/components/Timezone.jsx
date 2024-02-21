@@ -197,7 +197,7 @@ export function Timezone({ currentTime, timezone }) {
               <When condition={showFlags}>
                 <span
                   className={cn(
-                    `fi fi-${location?.countryCode?.toLowerCase()}`,
+                    `fi fi-xx fi-${location?.countryCode?.toLowerCase()}`,
                     'h-5 !w-auto aspect-[4/3] mr-2 rounded-[3px] shadow-sm max-width-[200px] flex-shrink-0',
                   )}></span>
               </When>
