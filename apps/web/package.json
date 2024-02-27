@@ -1,15 +1,12 @@
 {
   "name": "@epiczeit/web",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "keywords": [
-    "chrome",
-    "extension",
     "react",
     "time",
     "zones",
-    "timezones",
-    "new tab"
+    "time zones"
   ],
   "scripts": {
     "dev": "vite",

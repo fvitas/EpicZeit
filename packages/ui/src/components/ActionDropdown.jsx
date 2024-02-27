@@ -59,7 +59,7 @@ export function ActionDropdown() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
 
-          {import.meta.env.VITE_FEATURE_OPEN_NEW_TAB ? (
+          {import.meta.env.VITE_EXTENSION === 'CHROME' ? (
             <>
               <DropdownMenuSeparator />
 

@@ -1,11 +1,22 @@
 {
   "name": "@epiczeit/extension",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "keywords": [
+    "chrome",
+    "firefox",
+    "extension",
+    "time",
+    "zones",
+    "time zones",
+    "new tab"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:chrome && npm run build:firefox",
+    "build:chrome": "vite build --mode chrome",
+    "build:firefox": "vite build --mode firefox",
     "watch": "vite build -w",
     "preview": "vite preview"
   },
