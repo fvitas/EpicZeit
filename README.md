@@ -3,11 +3,10 @@
     <img src="apps/web/public/favicon/logo.svg" height="100" width="auto">
   </div>
   Epic Zeit
+
+  [![Badge License]][License]
 </h1>
 
-***
-
-[![Badge License]][License]
 
 ## Introduction
 
@@ -18,9 +17,9 @@ It is crafted for anyone who needs to manage international meetings, travel plan
 ## Look and Feel
 
 <p align="left">
-  <img src="apps/web/home/assets/demo_1.png" height="300" width="auto">
-  <img src="apps/web/home/assets/demo_4.png" height="300" width="auto">
-  <img src="apps/web/home/assets/demo_5.png" height="300" width="auto">
+  <img src="apps/web/home/assets/demo_1.png" height="auto" width="33%">
+  <img src="apps/web/home/assets/demo_4.png" height="auto" width="33%">
+  <img src="apps/web/home/assets/demo_5.png" height="auto" width="33%">
 </p>
 
 
