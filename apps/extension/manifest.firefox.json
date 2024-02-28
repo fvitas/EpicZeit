@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Epic Zeit",
   "version": "1.0.0",
   "author": "Filip Vitas",
@@ -10,7 +10,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "browser_action": {
+  "action": {
     "default_title": "Epic Zeit",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -20,8 +20,7 @@
     }
   },
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "scripts": ["background.js"]
   },
   "chrome_url_overrides": {
     "newtab": "index.html"

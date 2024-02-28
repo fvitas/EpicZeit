@@ -1,5 +1,5 @@
 if (import.meta.env.VITE_EXTENSION === 'FIREFOX') {
-  browser.browserAction.onClicked.addListener(() => {
+  browser.action.onClicked.addListener(() => {
     browser.tabs.create({})
   })
 } else {
