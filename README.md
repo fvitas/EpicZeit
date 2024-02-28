@@ -1,81 +1,72 @@
-# Turborepo starter
+<h1 align="center">
+  <div>
+    <img src="apps/web/public/favicon/logo.svg" height="100" width="auto">
+  </div>
+  Epic Zeit
+</h1>
 
-This is an official starter Turborepo.
+***
 
-## Using this example
+[![Badge License]][License]
 
-Run the following command:
+## Introduction
 
-```sh
-npx create-turbo@latest
-```
+Epic Zeit is a powerful tool designed to simplify your interaction with time zones worldwide. 
 
-## What's inside?
+It is crafted for anyone who needs to manage international meetings, travel plans, or simply wishes to keep track of time around the world.
 
-This Turborepo includes the following packages/apps:
+## Look and Feel
 
-### Apps and Packages
+<p align="left">
+  <img src="apps/web/home/assets/demo_1.png" height="300" width="auto">
+  <img src="apps/web/home/assets/demo_4.png" height="300" width="auto">
+  <img src="apps/web/home/assets/demo_5.png" height="300" width="auto">
+</p>
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Prerequisites
+- [Node.js](https://docs.npmjs.com/getting-started/installing-node) _(^18.0.0)_
+- [pnpm](https://pnpm.io/installation) _(^8.7.0)_
 
-### Utilities
 
-This Turborepo has some additional tools already setup for you:
+## Apps and Packages
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+This Turborepo monorepo includes the following packages/apps:
 
-### Build
+- `web`: a [Vite](https://vitejs.dev/) app
+- `extension`: a Chrome extension / Firefox addon 
+- `@repo/ui`: a React component library shared by both `web` and `extension` applications
+
+## Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm build
+pnpm run build
 ```
 
-### Develop
+## Develop
 
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm dev
+pnpm run dev
 ```
 
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
+or you can individually start a web app:
 ```
-cd my-turborepo
-npx turbo login
+cd apps/web
+pnpm run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## License
 
-```
-npx turbo link
-```
+Epic Zeit is made available under the [GPLv3 License][License]
 
-## Useful Links
 
-Learn more about the power of Turborepo:
+<!----------------------------------------------------------------------------->
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+[License]: LICENSE.txt
+
+[Badge License]: https://img.shields.io/badge/License-GPLv3-blue.svg
