@@ -85,6 +85,10 @@ function getOffsetFromHome(timezone, homeTimezone = 'UTC') {
   let resultHour = Math.abs(difference) < 60 ? Math.abs(difference) : Math.floor(Math.abs(difference) / 60)
   let resultMinutes = Math.abs(difference % 60)
 
+  if (!resultHour && !resultMinutes) {
+    return 0
+  }
+
   return resultSign + resultHour + (resultMinutes > 0 ? ':' + String(resultMinutes).padStart(2, '0') : '')
 
   // let homeTimezone = dayjs.tz('2023-11-18 15:55', homeTimezoneName)
