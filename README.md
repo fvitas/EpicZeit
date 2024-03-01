@@ -17,10 +17,16 @@ It is crafted for anyone who needs to manage international meetings, travel plan
 ## Look and Feel
 
 <p align="left">
-  <img src="apps/web/home/assets/demo_1.png" height="auto" width="32%">
-  <img src="apps/web/home/assets/demo_4.png" height="auto" width="32%">
-  <img src="apps/web/home/assets/demo_5.png" height="auto" width="32%">
+  <img src="apps/web/home/assets/demo_1.png" height="auto" width="100%">
+  <img src="apps/web/home/assets/demo_4.png" height="auto" width="100%">
+  <img src="apps/web/home/assets/demo_5.png" height="auto" width="100%">
 </p>
+
+
+## Todo
+
+- [ ] Show suggestions for frequently added locations
+- [ ] Implement my own timepicker (clockpicker)
 
 
 ## Prerequisites
