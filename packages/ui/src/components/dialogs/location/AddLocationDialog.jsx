@@ -5,7 +5,7 @@ export function AddLocationDialog({ isOpen, onOpenChange }) {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="overflow-hidden p-0 shadow-lg">
-        <AddLocation />
+        <AddLocation onSelect={() => onOpenChange(false)} />
       </DialogContent>
     </Dialog>
   )

@@ -1,24 +1,27 @@
 import { proxy, subscribe, useSnapshot } from 'valtio'
 
-const storedState = localStorage.getItem('epiczeit-settings')
+const storedState = localStorage.getItem('epiczeit-settings') ?? '{}'
 const defaultState = {
   showFlags: true,
   showDate: true,
   show24h: true,
   showBoldHour: true,
   offsetFromHome: true,
+  showSuggestions: true,
 }
 
-let initialState = storedState ? JSON.parse(storedState) : defaultState
+const state = proxy({
+  ...defaultState,
+  ...JSON.parse(storedState),
+})
 
-const state = proxy(initialState)
-
-function updateSettings({ showDate, showFlags, show24h, showBoldHour, offsetFromHome }) {
+function updateSettings({ showDate, showFlags, show24h, showBoldHour, offsetFromHome, showSuggestions }) {
   state.showFlags = showFlags
   state.showDate = showDate
   state.show24h = show24h
   state.showBoldHour = showBoldHour
   state.offsetFromHome = offsetFromHome
+  state.showSuggestions = showSuggestions
 }
 
 export const settingsActions = {

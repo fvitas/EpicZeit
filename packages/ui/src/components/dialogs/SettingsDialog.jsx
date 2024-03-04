@@ -12,7 +12,7 @@ import { Switch } from '@ui/components/ui/switch.jsx'
 import { settingsActions, useTimezoneSettings } from '@ui/state/settings.js'
 
 export function SettingsDialog({ isOpen, onOpenChange }) {
-  const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
+  const { showFlags, showDate, show24h, showBoldHour, offsetFromHome, showSuggestions } = useTimezoneSettings()
 
   function saveSettings(event) {
     event.preventDefault()
@@ -24,6 +24,7 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
       show24h: formData.get('show-24h') === 'on',
       showBoldHour: formData.get('showBoldHour') === 'on',
       offsetFromHome: formData.get('offset-from-home') === 'on',
+      showSuggestions: formData.get('show-suggestions') === 'on',
     })
     onOpenChange(false)
   }
@@ -34,7 +35,7 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
         <form className="flex-1 flex flex-col gap-2" onSubmit={saveSettings}>
           <DialogHeader>
             <DialogTitle>Settings</DialogTitle>
-            <DialogDescription>Customize your EpicZeit. Click save when you're done.</DialogDescription>
+            <DialogDescription>Customize your Epic Zeit. Click save when you're done.</DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-4 py-4">
@@ -71,6 +72,13 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
                 Time offset from home
               </Label>
               <Switch id="offset-from-home" name="offset-from-home" defaultChecked={offsetFromHome} />
+            </div>
+
+            <div className="flex justify-between items-center">
+              <Label className="cursor-pointer" htmlFor="show-suggestions">
+                Show suggestions
+              </Label>
+              <Switch id="show-suggestions" name="show-suggestions" defaultChecked={showSuggestions} />
             </div>
           </div>
 
