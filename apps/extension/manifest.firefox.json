@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Epic Zeit",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "author": "Filip Vitas",
   "description": "Epic way to sync timezones among colleagues, friends, and family across the globe.",
   "icons": {
