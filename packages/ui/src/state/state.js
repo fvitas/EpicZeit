@@ -2,6 +2,7 @@ import { defaultPalettes } from '@ui/components/palette/colors.js'
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone.js'
 import utc from 'dayjs/plugin/utc.js'
+import isEmpty from 'lodash/isEmpty.js'
 import { decompressFromEncodedURIComponent } from 'lz-string'
 import { proxy, subscribe, useSnapshot } from 'valtio'
 
@@ -82,9 +83,15 @@ function addLocation(selectedLocation) {
   }
 }
 
-function deleteLocation(location) {
-  let changedTimezone = state.timezones.find(timezone => timezone.locations.find(l => l.id === location.id))
-  changedTimezone.locations = changedTimezone.locations.filter(l => l.id !== location.id)
+function deleteLocation(deletedLocation) {
+  let changedTimezone = state.timezones.find(timezone =>
+    timezone.locations.find(location => location.id === deletedLocation.id),
+  )
+  changedTimezone.locations = changedTimezone.locations.filter(location => location.id !== deletedLocation.id)
+
+  if (isEmpty(changedTimezone.locations)) {
+    state.timezones = state.timezones.filter(timezone => !isEmpty(timezone.locations))
+  }
 }
 
 function editLocation(location, newLabel) {
@@ -118,8 +125,8 @@ function editTimezoneTime(timezone, hours, minutes = '00', amPm = '') {
   state.currentTime = newTime
 }
 
-function deleteTimezone(timezone) {
-  state.timezones = state.timezones.filter(tz => tz.offset !== timezone.offset)
+function deleteTimezone(deletedTimezone) {
+  state.timezones = state.timezones.filter(timezone => timezone.offset !== deletedTimezone.offset)
 }
 
 function resetTime() {
@@ -127,9 +134,9 @@ function resetTime() {
   state.currentTime = dayjs().utc()
 }
 
-function changeHome(timezone) {
-  state.timezones.forEach(tz => {
-    tz.isHome = tz.offset === timezone.offset
+function changeHome(homeTimezone) {
+  state.timezones.forEach(timezone => {
+    timezone.isHome = timezone.offset === homeTimezone.offset
   })
 }
 
