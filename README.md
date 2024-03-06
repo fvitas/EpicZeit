@@ -37,10 +37,13 @@ It is crafted for anyone who needs to manage international meetings, travel plan
 
 ## Apps and Packages
 
-This Turborepo monorepo includes the following apps and packages:
+This Turborepo monorepo includes the following: 
 
+#### apps
 - `web`: a [Vite](https://vitejs.dev/) app
-- `extension`: a Chrome extension / Firefox addon 
+- `extension`: a Chrome extension / Firefox addon
+
+#### packages
 - `@repo/ui`: a React component library package shared by both `web` and `extension` apps
 
 ## Build
