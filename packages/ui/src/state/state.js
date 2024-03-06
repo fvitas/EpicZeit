@@ -31,7 +31,12 @@ if (searchParams.get('share')) {
   } catch {}
 }
 
-const storedState = localStorage.getItem('epiczeit-state')
+const storedStateString = localStorage.getItem('epiczeit-state') ?? '{}'
+const storedState = JSON.parse(storedStateString)
+
+if (storedState.currentTime) {
+  storedState.currentTime = dayjs(storedState.currentTime).utc()
+}
 
 let initialState = {
   currentTime: dayjs.utc(),
@@ -41,12 +46,10 @@ let initialState = {
   previewPalette: null,
 }
 
-if (storedState) {
-  initialState = JSON.parse(storedState)
-  initialState.currentTime = dayjs(storedState.currentTime).utc()
-}
-
-const state = proxy(initialState)
+const state = proxy({
+  ...initialState,
+  ...storedState,
+})
 
 function getOffsetInMinutes(timezone, date = new Date()) {
   let formatter = new Intl.DateTimeFormat('en-GB', {
