@@ -12,7 +12,8 @@ import { Switch } from '@ui/components/ui/switch.jsx'
 import { settingsActions, useTimezoneSettings } from '@ui/state/settings.js'
 
 export function SettingsDialog({ isOpen, onOpenChange }) {
-  const { showFlags, showDate, show24h, showBoldHour, offsetFromHome, showSuggestions } = useTimezoneSettings()
+  const { showFlags, showDate, show24h, showBoldHour, offsetFromHome, showSuggestions, autoCloseLocationDialog } =
+    useTimezoneSettings()
 
   function saveSettings(event) {
     event.preventDefault()
@@ -25,6 +26,7 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
       showBoldHour: formData.get('showBoldHour') === 'on',
       offsetFromHome: formData.get('offset-from-home') === 'on',
       showSuggestions: formData.get('show-suggestions') === 'on',
+      autoCloseLocationDialog: formData.get('auto-close-location-dialog') === 'on',
     })
     onOpenChange(false)
   }
@@ -79,6 +81,17 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
                 Show suggestions
               </Label>
               <Switch id="show-suggestions" name="show-suggestions" defaultChecked={showSuggestions} />
+            </div>
+
+            <div className="flex justify-between items-center">
+              <Label className="cursor-pointer" htmlFor="auto-close-location-dialog">
+                Auto close location dialog
+              </Label>
+              <Switch
+                id="auto-close-location-dialog"
+                name="auto-close-location-dialog"
+                defaultChecked={autoCloseLocationDialog}
+              />
             </div>
           </div>
 

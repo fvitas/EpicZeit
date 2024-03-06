@@ -8,6 +8,7 @@ const defaultState = {
   showBoldHour: true,
   offsetFromHome: true,
   showSuggestions: true,
+  autoCloseLocationDialog: true,
 }
 
 const state = proxy({
@@ -15,13 +16,22 @@ const state = proxy({
   ...JSON.parse(storedState),
 })
 
-function updateSettings({ showDate, showFlags, show24h, showBoldHour, offsetFromHome, showSuggestions }) {
+function updateSettings({
+  showDate,
+  showFlags,
+  show24h,
+  showBoldHour,
+  offsetFromHome,
+  showSuggestions,
+  autoCloseLocationDialog,
+}) {
   state.showFlags = showFlags
   state.showDate = showDate
   state.show24h = show24h
   state.showBoldHour = showBoldHour
   state.offsetFromHome = offsetFromHome
   state.showSuggestions = showSuggestions
+  state.autoCloseLocationDialog = autoCloseLocationDialog
 }
 
 export const settingsActions = {
