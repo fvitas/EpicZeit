@@ -26,7 +26,7 @@ It is crafted for anyone who needs to manage international meetings, travel plan
 ## Todo
 
 - [x] Enable and show suggestions for frequently added locations
-- [ ] Auto close on add settings
+- [x] Settings flag for auto close add location dialog
 - [ ] Implement my own timepicker (clockpicker)
 
 
