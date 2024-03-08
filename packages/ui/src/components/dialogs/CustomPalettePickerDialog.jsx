@@ -32,7 +32,7 @@ export function CustomPalettePickerDialog({ isOpen, onOpenChange }) {
 
         <CustomPalettePicker />
 
-        <DialogFooter>
+        <DialogFooter className="flex justify-between flex-row mt-4">
           <Button size="sm" variant="outline" onClick={discardSelectedPalette}>
             Cancel
           </Button>

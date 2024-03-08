@@ -55,7 +55,7 @@ export function LocationLabelWithDialog({ location }) {
             />
           </div>
 
-          <DialogFooter className="flex flex-col gap-2 sm:justify-between sm:flex-row-reverse sm:space-x-0 mt-4">
+          <DialogFooter className="flex justify-between flex-row-reverse sm:justify-between sm:flex-row-reverse mt-4">
             <Button type="submit" className="w-24">
               Save
             </Button>

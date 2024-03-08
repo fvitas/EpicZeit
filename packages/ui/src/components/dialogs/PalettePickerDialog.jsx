@@ -64,7 +64,7 @@ export function PalettePickerDialog({ isOpen, onOpenChange }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={discardSelectedPalette}>
-      <DialogContent className="max-w-[570px] max-h-[500px] overflow-hidden" showOverlay={false}>
+      <DialogContent className="max-w-[570px] max-h-[590px] overflow-hidden" showOverlay={false}>
         <DialogHeader>
           <DialogTitle>Choose a palette</DialogTitle>
           <DialogDescription>Explore and select the perfect palette that reflects your mood</DialogDescription>
@@ -134,7 +134,7 @@ export function PalettePickerDialog({ isOpen, onOpenChange }) {
           </TabsContent>
         </Tabs>
 
-        <DialogFooter>
+        <DialogFooter className="flex flex-col gap-2 justify-between mt-4">
           <When condition={selectedTab === 'static'}>
             <div className="flex justify-between items-center mr-auto gap-2">
               <Label className="cursor-pointer" htmlFor="reverse-colors">
