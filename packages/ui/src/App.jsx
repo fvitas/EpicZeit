@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
 
 export function App() {
   return (
-    <div className="w-screen h-screen flex flex-nowrap overflow-scroll">
+    <div className="w-screen h-dvh flex flex-nowrap overflow-scroll">
       <QueryClientProvider client={queryClient}>
         <ActionDropdown />
         <Timezones />
