@@ -92,7 +92,7 @@ function deleteLocation(deletedLocation) {
   changedTimezone.locations = changedTimezone.locations.filter(location => location.id !== deletedLocation.id)
 
   if (isEmpty(changedTimezone.locations)) {
-    state.timezones = state.timezones.filter(timezone => !isEmpty(timezone.locations))
+    deleteTimezone(changedTimezone)
   }
 }
 
@@ -129,6 +129,10 @@ function editTimezoneTime(timezone, hours, minutes = '00', amPm = '') {
 
 function deleteTimezone(deletedTimezone) {
   state.timezones = state.timezones.filter(timezone => timezone.offset !== deletedTimezone.offset)
+
+  if (isEmpty(state.timezones)) {
+    resetTime()
+  }
 }
 
 function resetTime() {
