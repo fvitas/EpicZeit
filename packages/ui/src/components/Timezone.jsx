@@ -137,6 +137,16 @@ export function Timezone({ currentTime, timezone }) {
     currentTime,
   )
 
+  function deleteTimezone() {
+    actions.deleteTimezone(timezone)
+  }
+
+  function deleteTimezoneOnKeyDown(event) {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      actions.deleteTimezone(timezone)
+    }
+  }
+
   useEffect(() => {
     $('.clockpicker-' + timezone.offset).clockpicker({
       twelvehour: !show24h,
@@ -165,7 +175,7 @@ export function Timezone({ currentTime, timezone }) {
         }}
         className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
         <div className={'inline-block ' + 'clockpicker-' + timezone.offset}>
-          <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center">
+          <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center cursor-pointer">
             <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
             <span>:</span>
             <span>
@@ -212,11 +222,13 @@ export function Timezone({ currentTime, timezone }) {
         </ul>
       </div>
 
-      <div className="absolute bottom-20 left-1/2 translate-x-[-50%] translate-y-[-20%] flex flex-col gap-4 invisible group-hover:visible">
+      <div className="absolute bottom-20 left-1/2 translate-x-[-50%] translate-y-[-20%] flex flex-col gap-4 invisible group-hover:visible group-focus-within:visible">
         <IconTrash
           stroke={1.5}
           className="cursor-pointer"
-          onClick={() => actions.deleteTimezone(timezone)}
+          onClick={deleteTimezone}
+          onKeyDown={deleteTimezoneOnKeyDown}
+          tabIndex={0}
           title="Delete timezone"
         />
       </div>

@@ -35,7 +35,7 @@ export function LocationLabelWithDialog({ location }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={open => setIsOpen(open)}>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <div className="overflow-hidden truncate cursor-pointer">{location.label}</div>
       </DialogTrigger>
 
