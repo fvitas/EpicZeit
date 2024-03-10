@@ -1,15 +1,17 @@
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import { LocationLabelWithDialog } from '@ui/components/LocationLabelWithDialog.jsx'
+import { Button } from '@ui/components/ui/button.jsx'
+import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from '@ui/components/ui/popover.jsx'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@ui/components/ui/tooltip.jsx'
 import { useTimezoneSettings } from '@ui/state/settings.js'
 import { actions, useEpicZeitState, useHomeTimezone } from '@ui/state/state.js'
 import { cn } from '@ui/utils.js'
 import chroma from 'chroma-js'
 import dayjs from 'dayjs'
-import debounce from 'lodash/debounce.js'
-import { useEffect } from 'react'
+import { useState } from 'react'
 import { When } from 'react-if'
+import classes from './timezone.module.css'
 
 export function generateTextColor(backgroundColor) {
   let contrastWithWhite = chroma.contrast(backgroundColor, 'white')
@@ -123,6 +125,83 @@ function getFormattedTime(timezone, show24h, currentTime) {
   return dayjs.utc(currentTime).tz(timezone).format(formatTime).split(' ')
 }
 
+function ClockPicker() {
+  // TODO (filipv): check am pm settings
+  const [hour, setHour] = useState('00')
+
+  function onKeyDown(event) {
+    if (event.code === 'ArrowUp') {
+      event.preventDefault()
+      setHour(String(Math.min(Number(hour) + 1, 24)).padStart(2, '0'))
+    }
+    if (event.code === 'ArrowDown') {
+      event.preventDefault()
+      setHour(String(Math.max(0, Number(hour) - 1)).padStart(2, '0'))
+    }
+  }
+
+  function onKeyUp(event) {
+    // TODO (filipv): refactor this shit
+    if (event.target.value.length > 2) {
+      setHour(event.target.value.slice(-2, Infinity))
+      return
+    }
+    if (Number(event.target.value) < 0 || Number(event.target.value) > 24) {
+      return
+    }
+    if (event.target.value === '') {
+      setHour('00')
+      return
+    }
+
+    setHour(event.target.value)
+  }
+
+  return (
+    <div>
+      <div className="timepicker-ui-select-time timepicker-ui-normalize">Select Time</div>
+      <div className="flex gap-2 ">
+        <input
+          className={classes.input}
+          autoComplete="false"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+          value={hour}
+          onKeyDown={onKeyDown}
+          onChange={onKeyUp}
+        />
+
+        <span className="text-[50px] font-[none]">:</span>
+
+        <input
+          className={classes.input}
+          autoComplete="false"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+          value={hour}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+        />
+
+        <div className="flex flex-col">
+          <button className={classes.ampm}>AM</button>
+          <button className={classes.ampm}>PM</button>
+        </div>
+      </div>
+
+      <div className="flex justify-end gap-2 mt-4">
+        <PopoverClose asChild>
+          <Button variant="outline">Cancel</Button>
+        </PopoverClose>
+
+        <Button>Save</Button>
+      </div>
+    </div>
+  )
+}
+
 export function Timezone({ currentTime, timezone }) {
   const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
   const homeTimezone = useHomeTimezone()
@@ -147,20 +226,21 @@ export function Timezone({ currentTime, timezone }) {
     }
   }
 
-  useEffect(() => {
-    $('.clockpicker-' + timezone.offset).clockpicker({
-      twelvehour: !show24h,
-      placement: 'bottom',
-      align: 'left',
-      autoclose: true,
-      onChange: debounce(([hours, minutes, amPm = '']) => {
-        actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
-      }, 10),
-      onDismiss: () => {
-        actions.resetTime()
-      },
-    })
-  }, [show24h])
+  // TODO (filipv): create your own time clock picker
+  // useEffect(() => {
+  //   $('.clockpicker-' + timezone.offset).clockpicker({
+  //     twelvehour: !show24h,
+  //     placement: 'bottom',
+  //     align: 'left',
+  //     autoclose: true,
+  //     onChange: debounce(([hours, minutes, amPm = '']) => {
+  //       actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
+  //     }, 10),
+  //     onDismiss: () => {
+  //       actions.resetTime()
+  //     },
+  //   })
+  // }, [show24h])
 
   return (
     <div
@@ -174,26 +254,45 @@ export function Timezone({ currentTime, timezone }) {
             : `clamp(1.7rem, calc(${rect.width}px / 5), 5rem)`,
         }}
         className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
-        <div className={'inline-block ' + 'clockpicker-' + timezone.offset}>
-          <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center cursor-pointer">
-            <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
-            <span>:</span>
-            <span>
-              {minutes}
-              <When condition={!show24h}>
-                <span className="text-3xl">{amPm}</span>
-              </When>
-            </span>
-          </label>
+        {/*<div className={'inline-block ' + 'clockpicker-' + timezone.offset}>*/}
+        {/*  <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center cursor-pointer">*/}
+        {/*    <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>*/}
+        {/*    <span>:</span>*/}
+        {/*    <span>*/}
+        {/*      {minutes}*/}
+        {/*      <When condition={!show24h}>*/}
+        {/*        <span className="text-3xl">{amPm}</span>*/}
+        {/*      </When>*/}
+        {/*    </span>*/}
+        {/*  </label>*/}
 
-          <input
-            id={`time-${timezone.offset}`}
-            className="form-control sr-only"
-            tabIndex="-1"
-            value={`${hours}:${minutes}${amPm ? ':' + amPm : ''}`}
-            onChange={() => {}}
-          />
-        </div>
+        {/*  <input*/}
+        {/*    id={`time-${timezone.offset}`}*/}
+        {/*    className="form-control sr-only"*/}
+        {/*    tabIndex="-1"*/}
+        {/*    value={`${hours}:${minutes}${amPm ? ':' + amPm : ''}`}*/}
+        {/*    onChange={() => {}}*/}
+        {/*  />*/}
+        {/*</div>*/}
+
+        <Popover>
+          <PopoverTrigger>
+            <label className="flex flex-wrap justify-center">
+              <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
+              <span>:</span>
+              <span>
+                {minutes}
+                <When condition={!show24h}>
+                  <span className="text-3xl">{amPm}</span>
+                </When>
+              </span>
+            </label>
+          </PopoverTrigger>
+
+          <PopoverContent className="w-auto">
+            <ClockPicker />
+          </PopoverContent>
+        </Popover>
       </div>
 
       <When condition={showDate}>
