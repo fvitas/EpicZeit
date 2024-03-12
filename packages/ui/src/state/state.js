@@ -205,7 +205,12 @@ addEventListener('focus', () => {
 
 setInterval(() => {
   if (!state.showResetTime) {
-    state.currentTime = dayjs().utc()
+    const newTimeString = dayjs.utc().format('HH mm')
+    const currentTimeString = dayjs.utc(state.currentTime).format('HH mm')
+
+    if (newTimeString !== currentTimeString) {
+      state.currentTime = dayjs().utc()
+    }
   }
 }, 5_000)
 
