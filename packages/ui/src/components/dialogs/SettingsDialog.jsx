@@ -57,7 +57,7 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
 
             <div className="flex justify-between items-center">
               <Label className="cursor-pointer" htmlFor="show-24h">
-                24-hour time
+                24-hour time (e.g. 09:14)
               </Label>
               <Switch id="show-24h" name="show-24h" defaultChecked={show24h} />
             </div>
@@ -71,14 +71,14 @@ export function SettingsDialog({ isOpen, onOpenChange }) {
 
             <div className="flex justify-between items-center">
               <Label className="cursor-pointer" htmlFor="offset-from-home">
-                Time offset from home
+                Offset from the home time zone
               </Label>
               <Switch id="offset-from-home" name="offset-from-home" defaultChecked={offsetFromHome} />
             </div>
 
             <div className="flex justify-between items-center">
               <Label className="cursor-pointer" htmlFor="show-suggestions">
-                Show suggestions
+                Show suggested locations
               </Label>
               <Switch id="show-suggestions" name="show-suggestions" defaultChecked={showSuggestions} />
             </div>
