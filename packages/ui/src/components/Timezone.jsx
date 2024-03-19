@@ -1,9 +1,8 @@
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import { LocationLabelWithDialog } from '@ui/components/LocationLabelWithDialog.jsx'
-import { Button } from '@ui/components/ui/button.jsx'
-import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from '@ui/components/ui/popover.jsx'
-import { ToggleGroup, ToggleGroupItem } from '@ui/components/ui/toggle-group.jsx'
+import { ClockPicker } from '@ui/components/clock/ClockPicker.jsx'
+import { Popover, PopoverContent, PopoverTrigger } from '@ui/components/ui/popover.jsx'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@ui/components/ui/tooltip.jsx'
 import { useTimezoneSettings } from '@ui/state/settings.js'
 import { actions, useEpicZeitState, useHomeTimezone } from '@ui/state/state.js'
@@ -11,9 +10,7 @@ import { cn } from '@ui/utils.js'
 import chroma from 'chroma-js'
 import dayjs from 'dayjs'
 import debounce from 'lodash/debounce.js'
-import { useEffect, useState } from 'react'
 import { When } from 'react-if'
-import classes from './timezone.module.css'
 
 export function generateTextColor(backgroundColor) {
   let contrastWithWhite = chroma.contrast(backgroundColor, 'white')
@@ -127,241 +124,6 @@ function getFormattedTime(timezone, show24h, currentTime) {
   return dayjs.utc(currentTime).tz(timezone).format(formatTime).split(' ')
 }
 
-function ClockPicker({ show24h = true, hours = '', minutes = '', amPm, onClockChange, onSave, onCancel }) {
-  // TODO (filipv): check am pm settings
-  const [clockPickerHours, setClockPickerHours] = useState(hours)
-  const [clockPickerMinutes, setClockPickerMinutes] = useState(minutes)
-
-  useEffect(() => {
-    setClockPickerHours(hours)
-    setClockPickerMinutes(minutes)
-  }, [hours, minutes])
-
-  function onHourKeyDown(event) {
-    if (event.code === 'ArrowUp') {
-      event.preventDefault()
-      let newClockHour = Number(clockPickerHours) + 1
-      if (newClockHour >= 24) {
-        newClockHour = 0
-      }
-      onClockChange([String(newClockHour).padStart(2, '0'), clockPickerMinutes, amPm])
-    }
-    if (event.code === 'ArrowDown') {
-      event.preventDefault()
-      let newClockHour = Number(clockPickerHours) - 1
-      if (newClockHour < 0) {
-        newClockHour = 23
-      }
-      onClockChange([String(newClockHour).padStart(2, '0'), clockPickerMinutes, amPm])
-    }
-  }
-
-  function onHourKeyUp(event) {
-    if (Number.isNaN(Number(event.target.value)) || Number(event.target.value) < 0) {
-      return
-    }
-
-    if (event.target.value.length > 2) {
-      let valueArray = [...event.target.value]
-      valueArray.shift()
-      let newHourString = valueArray.join('')
-      // TODO (filipv): check am/pm
-      if (Number(newHourString) >= 24) {
-        onClockChange(['0' + valueArray.pop(), clockPickerMinutes, amPm])
-        return
-      }
-      onClockChange([newHourString, clockPickerMinutes, amPm])
-      return
-    }
-
-    if (event.target.value === '') {
-      onClockChange(['00', clockPickerMinutes, amPm])
-      return
-    }
-
-    onClockChange([event.target.value, clockPickerMinutes, amPm])
-  }
-
-  function onMinutesKeyDown(event) {
-    if (event.code === 'ArrowUp') {
-      event.preventDefault()
-      let newClockMinutes = Number(clockPickerMinutes) + 1
-      if (newClockMinutes >= 60) {
-        newClockMinutes = 0
-      }
-      onClockChange([clockPickerHours, String(newClockMinutes).padStart(2, '0'), amPm])
-    }
-    if (event.code === 'ArrowDown') {
-      event.preventDefault()
-      let newClockMinutes = Number(clockPickerMinutes) - 1
-      if (newClockMinutes < 0) {
-        newClockMinutes = 59
-      }
-      onClockChange([clockPickerHours, String(newClockMinutes).padStart(2, '0'), amPm])
-    }
-  }
-
-  function onMinutesKeyUp(event) {
-    if (Number.isNaN(Number(event.target.value)) || Number(event.target.value) < 0) {
-      return
-    }
-
-    if (event.target.value.length > 2) {
-      let valueArray = [...event.target.value]
-      valueArray.shift()
-      let newMinutesString = valueArray.join('')
-      if (Number(newMinutesString) >= 60) {
-        onClockChange([clockPickerHours, '0' + valueArray.pop(), amPm])
-        return
-      }
-      onClockChange([clockPickerHours, newMinutesString, amPm])
-      return
-    }
-
-    if (event.target.value === '') {
-      onClockChange([clockPickerHours, '00', amPm])
-      return
-    }
-
-    onClockChange([clockPickerHours, event.target.value, amPm])
-  }
-
-  return (
-    <div>
-      <div className="timepicker-ui-select-time timepicker-ui-normalize">Select Time</div>
-      <div className="flex gap-2 ">
-        <input
-          className={classes.input}
-          autoComplete="false"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck="false"
-          value={clockPickerHours}
-          onKeyDown={onHourKeyDown}
-          onChange={onHourKeyUp}
-        />
-
-        <span className="text-[50px] font-[none]">:</span>
-
-        <input
-          className={classes.input}
-          autoComplete="false"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck="false"
-          value={clockPickerMinutes}
-          onKeyDown={onMinutesKeyDown}
-          onKeyUp={onMinutesKeyUp}
-        />
-
-        <div className="flex flex-col">
-          <ToggleGroup
-            type="single"
-            orientation="vertical"
-            className="flex flex-col gap-0"
-            value={amPm}
-            aria-label="am or pm"
-            onValueChange={amPmValue => onClockChange([clockPickerHours, clockPickerMinutes, amPmValue])}>
-            <ToggleGroupItem
-              value="am"
-              className="text-base font-normal border border-border border-b-0 rounded-b-none ">
-              AM
-            </ToggleGroupItem>
-            <ToggleGroupItem
-              value="pm"
-              className="text-base font-normal border border-border border-t-0 rounded-t-none ">
-              PM
-            </ToggleGroupItem>
-          </ToggleGroup>
-        </div>
-      </div>
-
-      <div className={classes.clockpickerGroup + ' clockpicker-dial clockpicker-hours flex relative visible'}>
-        <div className="clockpicker-tick" style={{ left: '87px', top: '7px' }}>
-          00
-        </div>
-        <div className="clockpicker-tick" style={{ left: '114px', top: '40.2346px', fontSize: '120%' }}>
-          1
-        </div>
-        <div className="clockpicker-tick" style={{ left: '133.765px', top: '60px', fontSize: '120%' }}>
-          2
-        </div>
-        <div className="clockpicker-tick" style={{ left: '141px', top: '87px', fontSize: '120%' }}>
-          3
-        </div>
-        <div className="clockpicker-tick" style={{ left: '133.765px', top: '114px', fontSize: '120%' }}>
-          4
-        </div>
-        <div className="clockpicker-tick" style={{ left: '114px', top: '133.765px', fontSize: '120%' }}>
-          5
-        </div>
-        <div className="clockpicker-tick" style={{ left: '87px', top: '141px', fontSize: '120%' }}>
-          6
-        </div>
-        <div className="clockpicker-tick" style={{ left: '60px', top: '133.765px', fontSize: '120%' }}>
-          7
-        </div>
-        <div className="clockpicker-tick" style={{ left: '40.2346px', top: '114px', fontSize: '120%' }}>
-          8
-        </div>
-        <div className="clockpicker-tick" style={{ left: '33px', top: '87px', fontSize: '120%' }}>
-          9
-        </div>
-        <div className="clockpicker-tick" style={{ left: '40.2346px', top: '60px', fontSize: '120%' }}>
-          10
-        </div>
-        <div className="clockpicker-tick" style={{ left: '60px', top: '40.2346px', fontSize: '120%' }}>
-          11
-        </div>
-        <div className="clockpicker-tick" style={{ left: '87px', top: '33px', fontSize: '120%' }}>
-          12
-        </div>
-        <div className="clockpicker-tick" style={{ left: '127px', top: '17.718px' }}>
-          13
-        </div>
-        <div className="clockpicker-tick" style={{ left: '156.282px', top: '47px' }}>
-          14
-        </div>
-        <div className="clockpicker-tick" style={{ left: '167px', top: '87px' }}>
-          15
-        </div>
-        <div className="clockpicker-tick" style={{ left: '156.282px', top: '127px' }}>
-          16
-        </div>
-        <div className="clockpicker-tick" style={{ left: '127px', top: '156.282px' }}>
-          17
-        </div>
-        <div className="clockpicker-tick" style={{ left: '87px', top: '167px' }}>
-          18
-        </div>
-        <div className="clockpicker-tick" style={{ left: '47px', top: '156.282px' }}>
-          19
-        </div>
-        <div className="clockpicker-tick" style={{ left: '17.718px', top: '127px' }}>
-          20
-        </div>
-        <div className="clockpicker-tick" style={{ left: '7px', top: '87px' }}>
-          21
-        </div>
-        <div className="clockpicker-tick" style={{ left: '17.718px', top: '47px' }}>
-          22
-        </div>
-        <div className="clockpicker-tick" style={{ left: '47px', top: '17.718px' }}>
-          23
-        </div>
-      </div>
-
-      <div className="flex justify-end gap-2 mt-4">
-        <PopoverClose asChild>
-          <Button variant="outline">Cancel</Button>
-        </PopoverClose>
-
-        <Button>Save</Button>
-      </div>
-    </div>
-  )
-}
-
 export function Timezone({ currentTime, timezone }) {
   const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
   const homeTimezone = useHomeTimezone()
@@ -386,26 +148,9 @@ export function Timezone({ currentTime, timezone }) {
     }
   }
 
-  // TODO (filipv): create your own time clock picker
-  // useEffect(() => {
-  //   $('.clockpicker-' + timezone.offset).clockpicker({
-  //     twelvehour: !show24h,
-  //     placement: 'bottom',
-  //     align: 'left',
-  //     autoclose: true,
-  //     onChange: debounce(([hours, minutes, amPm = '']) => {
-  //       actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
-  //     }, 10),
-  //     onDismiss: () => {
-  //       actions.resetTime()
-  //     },
-  //   })
-  // }, [show24h])
-
   let debounceChange = debounce(([hours, minutes, amPm = '']) => {
-    console.log(hours, minutes, amPm)
     actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
-  }, 0)
+  }, 10)
 
   return (
     <div
@@ -419,27 +164,6 @@ export function Timezone({ currentTime, timezone }) {
             : `clamp(1.7rem, calc(${rect.width}px / 5), 5rem)`,
         }}
         className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
-        {/*<div className={'inline-block ' + 'clockpicker-' + timezone.offset}>*/}
-        {/*  <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center cursor-pointer">*/}
-        {/*    <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>*/}
-        {/*    <span>:</span>*/}
-        {/*    <span>*/}
-        {/*      {minutes}*/}
-        {/*      <When condition={!show24h}>*/}
-        {/*        <span className="text-3xl">{amPm}</span>*/}
-        {/*      </When>*/}
-        {/*    </span>*/}
-        {/*  </label>*/}
-
-        {/*  <input*/}
-        {/*    id={`time-${timezone.offset}`}*/}
-        {/*    className="form-control sr-only"*/}
-        {/*    tabIndex="-1"*/}
-        {/*    value={`${hours}:${minutes}${amPm ? ':' + amPm : ''}`}*/}
-        {/*    onChange={() => {}}*/}
-        {/*  />*/}
-        {/*</div>*/}
-
         <Popover>
           <PopoverTrigger>
             <label className="flex flex-wrap justify-center">
@@ -455,17 +179,7 @@ export function Timezone({ currentTime, timezone }) {
           </PopoverTrigger>
 
           <PopoverContent className="w-auto">
-            <ClockPicker
-              show24h={show24h}
-              hours={hours}
-              minutes={minutes}
-              amPm={amPm}
-              onClockChange={debounceChange}
-              onSave={() => {}}
-              onCancel={() => {
-                actions.resetTime()
-              }}
-            />
+            <ClockPicker show24h={show24h} hours={hours} minutes={minutes} amPm={amPm} onClockChange={debounceChange} />
           </PopoverContent>
         </Popover>
       </div>
