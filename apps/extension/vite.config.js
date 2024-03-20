@@ -27,9 +27,13 @@ export default defineConfig(({ mode }) => {
       outDir: outputDir,
       sourcemap: false,
       emptyOutDir: true,
-    },
-    server: {
-      port: 3000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+          },
+        },
+      },
     },
   }
 })
