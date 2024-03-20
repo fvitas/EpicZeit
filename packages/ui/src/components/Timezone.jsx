@@ -11,7 +11,6 @@ import chroma from 'chroma-js'
 import dayjs from 'dayjs'
 import debounce from 'lodash/debounce.js'
 import { memo } from 'react'
-import { When } from 'react-if'
 
 export function generateTextColor(backgroundColor) {
   let contrastWithWhite = chroma.contrast(backgroundColor, 'white')
@@ -188,9 +187,7 @@ export function Timezone({ currentTime, timezone }) {
               <span>:</span>
               <span>
                 {minutes}
-                <When condition={!show24h}>
-                  <span className="text-3xl">{amPm}</span>
-                </When>
+                {!show24h ? <span className="text-3xl">{amPm}</span> : null}
               </span>
             </label>
           </PopoverTrigger>
