@@ -1,5 +1,5 @@
 import { CLOCK_VIEW } from '@ui/components/clock/types.js'
-import classes from './timezone.module.css'
+import { cn } from '@ui/utils.js'
 
 export function ClockPickerInput({ value, show24h, type, onChange, onFocus }) {
   function onKeyDown(event) {
@@ -83,7 +83,11 @@ export function ClockPickerInput({ value, show24h, type, onChange, onFocus }) {
 
   return (
     <input
-      className={classes.input + ' focus-visible:bg-primary/10'}
+      className={cn(
+        'w-[96px] h-[80px] border border-input rounded-md border-[#cdcdcd] outline-none text-center p-1 text-[40px]',
+        'focus-visible:bg-primary/10',
+        'selection:text-inherit selection:bg-transparent',
+      )}
       autoComplete="false"
       autoCorrect="off"
       autoCapitalize="off"

@@ -1,9 +1,9 @@
-export const CLOCK_WIDTH = 220
-export const CLOCK_HOUR_WIDTH = 36
+export const CLOCK_SIZE = 220
+export const CLOCK_NUMBER_SIZE = 36
 
 const clockCenter = {
-  x: CLOCK_WIDTH / 2,
-  y: CLOCK_WIDTH / 2,
+  x: CLOCK_SIZE / 2,
+  y: CLOCK_SIZE / 2,
 }
 
 const baseClockPoint = {
@@ -54,7 +54,7 @@ export function getHours(offsetX, offsetY, showAmPm) {
     return hour
   }
 
-  if (distance < CLOCK_WIDTH / 2 - CLOCK_HOUR_WIDTH) {
+  if (distance < CLOCK_SIZE / 2 - CLOCK_NUMBER_SIZE) {
     hour += 12
     hour %= 24
   }
