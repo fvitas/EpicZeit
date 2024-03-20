@@ -11,7 +11,7 @@ export function ClockNumber(props) {
 
   return (
     <span
-      className={cn('absolute inline-flex justify-center items-center rounded-full', isSelected ? 'text-white' : '')}
+      className={cn('absolute inline-flex justify-center items-center rounded-full', isSelected && 'text-white')}
       style={{
         height: CLOCK_NUMBER_SIZE,
         width: CLOCK_NUMBER_SIZE,
