@@ -1,6 +1,8 @@
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import { LocationLabelWithDialog } from '@ui/components/LocationLabelWithDialog.jsx'
+import { ClockPicker } from '@ui/components/clock/ClockPicker.jsx'
+import { Popover, PopoverContent, PopoverTrigger } from '@ui/components/ui/popover.jsx'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@ui/components/ui/tooltip.jsx'
 import { useTimezoneSettings } from '@ui/state/settings.js'
 import { actions, useEpicZeitState, useHomeTimezone } from '@ui/state/state.js'
@@ -8,8 +10,7 @@ import { cn } from '@ui/utils.js'
 import chroma from 'chroma-js'
 import dayjs from 'dayjs'
 import debounce from 'lodash/debounce.js'
-import { useEffect } from 'react'
-import { When } from 'react-if'
+import { memo } from 'react'
 
 export function generateTextColor(backgroundColor) {
   let contrastWithWhite = chroma.contrast(backgroundColor, 'white')
@@ -64,7 +65,7 @@ function getOffset(timezone, date = new Date()) {
   return sign + hour + (minutes ? ':' + minutes : '')
 }
 
-function getOffsetFromHome(timezone, homeTimezone = 'UTC') {
+function getTimezoneOffset(timezone, homeTimezone = 'UTC') {
   let homeFormatter = new Intl.DateTimeFormat('en-GB', {
     timeZone: homeTimezone,
     timeZoneName: 'shortOffset',
@@ -123,6 +124,22 @@ function getFormattedTime(timezone, show24h, currentTime) {
   return dayjs.utc(currentTime).tz(timezone).format(formatTime).split(' ')
 }
 
+const OffsetFromHomeWithTooltip = memo(function ({ timezone, timezoneName, homeTimezoneName }) {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger onClick={() => actions.changeHome(timezone)}>
+          {getTimezoneOffset(timezoneName, homeTimezoneName)}
+        </TooltipTrigger>
+
+        <TooltipContent>
+          <p>Select as home</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+})
+
 export function Timezone({ currentTime, timezone }) {
   const { showFlags, showDate, show24h, showBoldHour, offsetFromHome } = useTimezoneSettings()
   const homeTimezone = useHomeTimezone()
@@ -147,20 +164,9 @@ export function Timezone({ currentTime, timezone }) {
     }
   }
 
-  useEffect(() => {
-    $('.clockpicker-' + timezone.offset).clockpicker({
-      twelvehour: !show24h,
-      placement: 'bottom',
-      align: 'left',
-      autoclose: true,
-      onChange: debounce(([hours, minutes, amPm = '']) => {
-        actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
-      }, 10),
-      onDismiss: () => {
-        actions.resetTime()
-      },
-    })
-  }, [show24h])
+  let debounceChange = debounce(([hours, minutes, amPm = '']) => {
+    actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
+  }, 10)
 
   return (
     <div
@@ -174,33 +180,29 @@ export function Timezone({ currentTime, timezone }) {
             : `clamp(1.7rem, calc(${rect.width}px / 5), 5rem)`,
         }}
         className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
-        <div className={'inline-block ' + 'clockpicker-' + timezone.offset}>
-          <label htmlFor={`time-${timezone.offset}`} className="flex flex-wrap justify-center cursor-pointer">
-            <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
-            <span>:</span>
-            <span>
-              {minutes}
-              <When condition={!show24h}>
-                <span className="text-3xl">{amPm}</span>
-              </When>
-            </span>
-          </label>
+        <Popover>
+          <PopoverTrigger>
+            <label className="flex flex-wrap justify-center">
+              <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
+              <span>:</span>
+              <span>
+                {minutes}
+                {!show24h ? <span className="text-3xl">{amPm}</span> : null}
+              </span>
+            </label>
+          </PopoverTrigger>
 
-          <input
-            id={`time-${timezone.offset}`}
-            className="form-control sr-only"
-            tabIndex="-1"
-            value={`${hours}:${minutes}${amPm ? ':' + amPm : ''}`}
-            onChange={() => {}}
-          />
-        </div>
+          <PopoverContent className="w-auto">
+            <ClockPicker show24h={show24h} hours={hours} minutes={minutes} amPm={amPm} onClockChange={debounceChange} />
+          </PopoverContent>
+        </Popover>
       </div>
 
-      <When condition={showDate}>
+      {showDate ? (
         <div className="text-center" style={{ fontSize: 'clamp(1.3rem, 1vw + 0.75rem, 1.8rem)' }}>
           {weekDay}, {addSuffix(dayOfTheMonth)}
         </div>
-      </When>
+      ) : null}
 
       <br className="my-5" />
 
@@ -208,13 +210,13 @@ export function Timezone({ currentTime, timezone }) {
         <ul className="inline-block text-left space-y-2">
           {timezone.locations.map(location => (
             <li key={location.id} className="flex items-center" style={{ maxWidth: rect.width }}>
-              <When condition={showFlags}>
+              {showFlags ? (
                 <span
                   className={cn(
                     `fi fi-xx fi-${location?.countryCode?.toLowerCase()}`,
                     'h-5 !w-auto aspect-[4/3] mr-2 rounded-[3px] shadow-sm max-width-[200px] flex-shrink-0',
                   )}></span>
-              </When>
+              ) : null}
 
               <LocationLabelWithDialog location={location} />
             </li>
@@ -234,27 +236,17 @@ export function Timezone({ currentTime, timezone }) {
       </div>
 
       <div className="absolute bottom-10 left-1/2 translate-x-[-50%] text-lg">
-        <When condition={offsetFromHome}>
-          <When condition={timezone.isHome}>
-            <IconHome size={24} stroke={1.5} className="-translate-y-0.5" />
-          </When>
-
-          <When condition={!timezone.isHome}>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger onClick={() => actions.changeHome(timezone)}>
-                  {getOffsetFromHome(timezone.locations[0].timezone, homeTimezone?.locations[0]?.timezone)}
-                </TooltipTrigger>
-
-                <TooltipContent>
-                  <p>Select as home</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </When>
-        </When>
-
-        <When condition={!offsetFromHome}>{getOffsetFromHome(timezone.locations[0].timezone)}</When>
+        {!offsetFromHome ? (
+          getTimezoneOffset(timezone.locations[0].timezone)
+        ) : timezone.isHome ? (
+          <IconHome size={24} stroke={1.5} className="-translate-y-0.5" />
+        ) : (
+          <OffsetFromHomeWithTooltip
+            timezone={timezone}
+            timezoneName={timezone.locations[0].timezone}
+            homeTimezoneName={homeTimezone?.locations[0]?.timezone}
+          />
+        )}
       </div>
     </div>
   )

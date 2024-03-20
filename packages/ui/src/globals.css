@@ -93,22 +93,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.arrow {
-  display: none !important;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  @apply m-0;
 }
 
-.clockpicker-popover .popover-content {
-  background: none;
-}
-.popover-title {
-  @apply border-0
-}
-.clockpicker-button.pm-button {
-  @apply m-0
-}
-.clockpicker-am-pm-block {
-  @apply flex justify-between items-center
-}
-.clockpicker-span-am-pm {
- @apply ml-2
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -123,7 +123,7 @@ function editTimezoneTime(timezone, hours, minutes = '00', amPm = '') {
   let currentTimezoneDate = state.currentTime.tz(timezoneName).format('YYYY-MM-DD')
   let newTime = dayjs.tz(`${currentTimezoneDate} ${newHours}:${newMinutes}`, timezoneName).utc()
 
-  state.showResetTime = state.showResetTime || state.currentTime.format('HH:mm') !== newTime.format('HH:mm')
+  state.showResetTime = dayjs.utc().format('HH:mm') !== newTime.utc().format('HH:mm')
   state.currentTime = newTime
 }
 
