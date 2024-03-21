@@ -26,8 +26,8 @@ function useMousePosition(callback) {
 
       const elementRect = element.getBoundingClientRect()
 
-      if (event.touches) {
-        const touch = event.touches[0]
+      if (event.changedTouches) {
+        const touch = event.changedTouches[0]
         offsetX = touch.clientX - elementRect.left
         offsetY = touch.clientY - elementRect.top
       } else {

@@ -18,8 +18,8 @@ export function ClockPicker(props) {
 
   const [currentView, setCurrentView] = useState(CLOCK_VIEW.HOURS)
 
-  const selectedHour = useRef(0)
-  const selectedMinute = useRef(0)
+  const selectedHour = useRef(-1)
+  const selectedMinute = useRef(-1)
 
   const resetTime = useCallback(() => {
     onClockChange([hours, minutes, amPm])
