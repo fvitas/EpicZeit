@@ -1,15 +1,13 @@
 import { useResizeObserver } from '@mantine/hooks'
 import { IconHome, IconTrash } from '@tabler/icons-react'
 import { LocationLabelWithDialog } from '@ui/components/LocationLabelWithDialog.jsx'
-import { ClockPicker } from '@ui/components/clock/ClockPicker.jsx'
-import { Popover, PopoverContent, PopoverTrigger } from '@ui/components/ui/popover.jsx'
+import { ClockPickerResponsiveWrapper } from '@ui/components/clock/ClockPickerResponsiveWrapper.jsx'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@ui/components/ui/tooltip.jsx'
 import { useTimezoneSettings } from '@ui/state/settings.js'
 import { actions, useEpicZeitState, useHomeTimezone } from '@ui/state/state.js'
 import { cn } from '@ui/utils.js'
 import chroma from 'chroma-js'
 import dayjs from 'dayjs'
-import debounce from 'lodash/debounce.js'
 import { memo } from 'react'
 
 export function generateTextColor(backgroundColor) {
@@ -164,38 +162,28 @@ export function Timezone({ currentTime, timezone }) {
     }
   }
 
-  let debounceChange = debounce(([hours, minutes, amPm = '']) => {
-    actions.editTimezoneTime(timezone, hours, minutes, amPm.toLowerCase())
-  }, 10)
-
   return (
     <div
       ref={ref}
       className="group relative h-full flex-1 min-w-[190px] space-y-1 px-5 pt-[33vh] overflow-hidden hover:visible"
       style={generateColors(palette, timezone.locations[0].timezone, currentTime)}>
       <div
+        className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary"
         style={{
           fontSize: show24h
             ? `clamp(2.4rem, calc(${rect.width}px / 3.5), 5rem)`
             : `clamp(1.7rem, calc(${rect.width}px / 5), 5rem)`,
-        }}
-        className="text-center px-2 focus-visible:outline focus-visible:outline-1 focus-visible:outline-primary">
-        <Popover>
-          <PopoverTrigger>
-            <label className="flex flex-wrap justify-center">
-              <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
-              <span>:</span>
-              <span>
-                {minutes}
-                {!show24h ? <span className="text-3xl">{amPm}</span> : null}
-              </span>
-            </label>
-          </PopoverTrigger>
-
-          <PopoverContent className="w-auto">
-            <ClockPicker show24h={show24h} hours={hours} minutes={minutes} amPm={amPm} onClockChange={debounceChange} />
-          </PopoverContent>
-        </Popover>
+        }}>
+        <ClockPickerResponsiveWrapper show24h={show24h} timezone={timezone} hours={hours} minutes={minutes} amPm={amPm}>
+          <label className="flex flex-wrap justify-center">
+            <span className={showBoldHour ? 'font-semibold' : ''}>{hours}</span>
+            <span>:</span>
+            <span>
+              {minutes}
+              {!show24h ? <span className="text-3xl">{amPm}</span> : null}
+            </span>
+          </label>
+        </ClockPickerResponsiveWrapper>
       </div>
 
       {showDate ? (

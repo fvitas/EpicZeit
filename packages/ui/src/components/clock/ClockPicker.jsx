@@ -1,8 +1,6 @@
-import { Button } from '@ui/components/ui/button.jsx'
-import { PopoverClose } from '@ui/components/ui/popover.jsx'
 import { ToggleGroup, ToggleGroupItem } from '@ui/components/ui/toggle-group.jsx'
 import useMousePosition from '@ui/hooks/useMousePosition.js'
-import { useCallback, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { ClockPickerInput } from './ClockPickerInput.jsx'
 import { ClockNumber } from './ClockPickerNumber.jsx'
 import { ClockPickerPointer } from './ClockPickerPointer.jsx'
@@ -20,10 +18,6 @@ export function ClockPicker(props) {
 
   const selectedHour = useRef(-1)
   const selectedMinute = useRef(-1)
-
-  const resetTime = useCallback(() => {
-    onClockChange([hours, minutes, amPm])
-  }, [])
 
   const [ref] = useMousePosition(({ offsetX, offsetY }) => {
     const newValue =
@@ -43,7 +37,7 @@ export function ClockPicker(props) {
   return (
     <div className="flex flex-col gap-4">
       <div className="timepicker-ui-select-time timepicker-ui-normalize">Select Time</div>
-      <div className="flex">
+      <div className="flex justify-center">
         <ClockPickerInput
           type="hours"
           show24h={show24h}
@@ -144,18 +138,6 @@ export function ClockPicker(props) {
             </div>
           ) : null}
         </div>
-      </div>
-
-      <div className="flex justify-end gap-2">
-        <PopoverClose asChild>
-          <Button variant="outline" onClick={resetTime}>
-            Cancel
-          </Button>
-        </PopoverClose>
-
-        <PopoverClose asChild>
-          <Button>Save</Button>
-        </PopoverClose>
       </div>
     </div>
   )

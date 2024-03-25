@@ -27,7 +27,12 @@ It is crafted for anyone who needs to manage international meetings, travel plan
 
 - [x] Enable and show suggestions for frequently added locations
 - [x] Settings flag for auto close add location dialog
-- [ ] Implement my own timepicker (clockpicker)
+- [x] Implement my own timepicker (clockpicker)
+- [x] Clock picker dialog for mobile users
+- [ ] Create android app using capacitor and ship it 🚀
+- [ ] Vertical layout for mobile ?
+- [ ] Add service workers for PWA ?
+- [ ] Replace localstorage with something else and support state migration ?
 
 
 ## Prerequisites
