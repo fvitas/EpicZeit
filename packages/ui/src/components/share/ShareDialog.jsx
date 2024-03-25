@@ -34,7 +34,7 @@ export function ShareDialog({ isOpen, onOpenChange }) {
             <Label htmlFor="link" className="sr-only">
               Link
             </Label>
-            <Input id="link" className="h-9" defaultValue={shareUrl} readOnly disabled={!shareUrl} />
+            <Input id="link" className="h-9" defaultValue={shareUrl} readOnly disabled={!shareUrl} tabIndex={-1} />
           </div>
 
           <CopyButton value={shareUrl} />
