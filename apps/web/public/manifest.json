@@ -19,7 +19,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/app",
   "display": "standalone",
   "theme_color": "#262626",
   "background_color": "#262626"
