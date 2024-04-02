@@ -2,11 +2,32 @@ import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import packageJson from './package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), visualizer({ gzipSize: true })],
+  // plugins: [react(), visualizer({ gzipSize: true })],
+  plugins: [
+    react(),
+    visualizer({ gzipSize: true }),
+    VitePWA({
+      devOptions: {
+        enabled: false,
+      },
+      strategies: 'generateSW',
+      includeAssets: ['favicon.ico', 'manifest.json', 'fonts/*.woff2'],
+      injectRegister: 'auto',
+      registerType: 'autoUpdate',
+      manifest: false,
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,ico,woff2}'],
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
+      },
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
